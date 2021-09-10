@@ -1,7 +1,4 @@
+import MainPage from "./../components/main/index";
 export default function Home() {
-  return (
-    <div>
-      next-app
-    </div>
-  )
+  return <MainPage />;
 }
