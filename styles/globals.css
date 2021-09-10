@@ -13,29 +13,40 @@ a {
   text-decoration: none;
 }
 
-p,h1,h2,h3,h4,h5,h6{
-  padding:0;
-  margin:0;
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
 }
 
-button{
+button {
   cursor: pointer;
   border: none;
-  background:none;
+  background: none;
   outline: none;
 }
 
-textarea{
+textarea {
   background: none;
   resize: none;
   outline: none;
 }
 
-input{
+input {
   background: none;
   outline: none;
 }
 
+img {
+  object-fit: cover;
+}
+
 * {
   box-sizing: border-box;
+  color: #333333;
 }

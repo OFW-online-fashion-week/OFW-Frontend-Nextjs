@@ -18,6 +18,7 @@ export const Container = styled.div`
 
 export const WebLogo = styled.div`
   margin-top: 25px;
+  cursor: pointer;
 `;
 
 export const MenuWrap = styled.div`

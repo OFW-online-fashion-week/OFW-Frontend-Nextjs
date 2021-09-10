@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 
 export const COLOR = {
   main: "#5AC18E",
-  black: "#333333",
   pink: "#F7347A",
   text: "#999999",
 };
