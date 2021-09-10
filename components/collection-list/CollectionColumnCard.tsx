@@ -11,7 +11,11 @@ export default function CollectionColumnCard({
     <S.ColumnCard>
       <img src={coverImg} className="cover-img" />
       <h1 className="collection-title">{title}</h1>
-      <p className="collection-description">{description}</p>
+      <p className="collection-description">
+        {description.length > 100
+          ? `${description.substring(0, 100)}...`
+          : description}
+      </p>
     </S.ColumnCard>
   );
 }

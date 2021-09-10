@@ -11,15 +11,18 @@ export default function Header() {
   }, []);
 
   const routing = React.useCallback(({ target }) => {
-    router.push(`/${target.innerHTML}`);
+    if (target.id !== "menu-wrap") {
+      router.push(`/${target.innerHTML}`);
+    }
   }, []);
+
   return (
     <S.Wrapper>
       <S.Container>
         <S.WebLogo onClick={routingToMain}>
           <LogoIcon />
         </S.WebLogo>
-        <S.MenuWrap onClick={routing}>
+        <S.MenuWrap onClick={routing} id="menu-wrap">
           <span>collections</span>
           <span>Brands</span>
           <span>Models</span>
