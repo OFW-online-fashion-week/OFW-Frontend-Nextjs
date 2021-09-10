@@ -24,9 +24,9 @@ export default function Header() {
         </S.WebLogo>
         <S.MenuWrap onClick={routing} id="menu-wrap">
           <span>collections</span>
-          <span>Brands</span>
-          <span>Models</span>
-          <span>About</span>
+          <span>brands</span>
+          <span>models</span>
+          <span>about</span>
         </S.MenuWrap>
       </S.Container>
     </S.Wrapper>
