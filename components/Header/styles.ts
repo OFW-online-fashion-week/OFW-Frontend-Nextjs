@@ -7,6 +7,7 @@ export const Wrapper = styled(BaseWrapper)`
   height: ${HEADER_HEIGHT};
   position: fixed;
   z-index: 5;
+  background: white;
 `;
 
 export const Container = styled.div`
@@ -27,5 +28,6 @@ export const MenuWrap = styled.div`
   & span {
     text-transform: capitalize;
     font-size: 18px;
+    cursor: pointer;
   }
 `;
