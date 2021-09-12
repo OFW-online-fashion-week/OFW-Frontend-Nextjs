@@ -1,11 +1,11 @@
-import Slider from "./Slider";
+import SliderToIntro from "./SliderToIntro";
 import * as S from "./styles";
 
 export default function MainPage() {
   return (
     <S.Wrapper>
       <S.Container>
-        <Slider />
+        <SliderToIntro />
       </S.Container>
     </S.Wrapper>
   );
