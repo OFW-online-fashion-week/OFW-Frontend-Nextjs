@@ -1,3 +1,4 @@
+import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 import { BaseWrapper, HEADER_HEIGHT } from "../../styles";
 import { COLOR } from "./../../styles/index";
@@ -18,6 +19,17 @@ export const Container = styled.div`
   }
 `;
 
+const introWrapAnime = keyframes`
+0%{
+  margin-top:50px;
+  opacity:0;
+}
+100%{
+  margin-top:0px;
+  opacity:1;
+}
+`;
+
 export const SliderToIntroWrap = styled.div`
   background-image: url("/slider-intro-image.png");
   display: flex;
@@ -29,6 +41,7 @@ export const IntroContainer = styled.div`
   width: 1300px;
   height: 350px;
   position: relative;
+  animation: ${introWrapAnime} 1s;
   .top {
     position: absolute;
     width: 100%;
@@ -98,7 +111,7 @@ export const SliderToCollectionsWrap = styled.div`
     flex-direction: column;
     padding-right: 300px;
     opacity: 0;
-    margin-top: 100px;
+    margin-top: 200px;
     transition: 1s;
   }
   .collections-title {
