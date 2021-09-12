@@ -3,6 +3,8 @@ import styled from "@emotion/styled";
 import { BaseWrapper, HEADER_HEIGHT } from "../../styles";
 import { COLOR } from "./../../styles/index";
 
+export const PAGE_HEIGHT = 900;
+
 export const Wrapper = styled(BaseWrapper)``;
 
 export const Container = styled.div`
@@ -11,7 +13,7 @@ export const Container = styled.div`
   flex-direction: column;
   .page {
     width: 100%;
-    height: 900px;
+    height: ${`${PAGE_HEIGHT}px`};
     background-repeat: no-repeat;
     background-size: cover;
     position: sticky;

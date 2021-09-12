@@ -8,7 +8,7 @@ export default function PageToCollections() {
   React.useEffect(() => {
     window.onscroll = () => {
       const contentsWrap = document.getElementById("contents-wrap");
-      const scrollY = 400;
+      const scrollY = S.PAGE_HEIGHT * 0 + S.PAGE_HEIGHT / 2;
       if (contentsWrap) {
         if (window.scrollY > scrollY) {
           contentsWrap.style.opacity = (

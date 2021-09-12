@@ -8,6 +8,7 @@ export default function MainPage() {
       <S.Container>
         <PageToIntro />
         <PageToCollections />
+        <PageToCollections />
       </S.Container>
     </S.Wrapper>
   );
