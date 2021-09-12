@@ -1,11 +1,16 @@
-import SliderToIntro from "./SliderToIntro";
+import PageToCollections from "./PageToCollections";
+import PageToIntro from "./PageToIntro";
 import * as S from "./styles";
 
 export default function MainPage() {
   return (
     <S.Wrapper>
       <S.Container>
-        <SliderToIntro />
+        <PageToIntro />
+        <PageToCollections />
+        <PageToCollections />
+        <PageToCollections />
+        <PageToCollections />
       </S.Container>
     </S.Wrapper>
   );

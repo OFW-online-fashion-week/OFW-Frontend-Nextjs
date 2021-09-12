@@ -1,10 +1,10 @@
-import React from "react";
 import { LogoIcon, OnlineFashionWeekIcon } from "../../assets";
+import React from "react";
 import * as S from "./styles";
 
-export default function SliderToIntro() {
+export default function PageToCollections() {
   return (
-    <S.SliderToIntroWrap>
+    <S.SliderToIntroWrap className="page">
       <S.IntroContainer>
         <S.SideLine />
         <S.SideLine style={{ left: 0 }} />

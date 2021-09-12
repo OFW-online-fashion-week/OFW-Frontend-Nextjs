@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { BaseWrapper } from "../../styles";
+import { BaseWrapper, HEADER_HEIGHT } from "../../styles";
 
 export const Wrapper = styled(BaseWrapper)``;
 
@@ -7,24 +7,21 @@ export const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-`;
-
-export const MainSlider = styled.div`
-  width: 100%;
-  & img {
+  .page {
     width: 100%;
+    height: 900px;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 `;
 
 export const SliderToIntroWrap = styled.div`
-  width: 100%;
-  height: 920px;
   background-image: url("/slider-intro-image.png");
-  background-repeat: no-repeat;
-  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: sticky;
+  top: ${HEADER_HEIGHT};
 `;
 
 export const IntroContainer = styled.div`
