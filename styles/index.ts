@@ -18,4 +18,4 @@ export const BaseContainer = styled.div`
   flex-direction: column;
 `;
 
-export const HEADER_HEIGHT = "170px";
+export const HEADER_HEIGHT = "150px";

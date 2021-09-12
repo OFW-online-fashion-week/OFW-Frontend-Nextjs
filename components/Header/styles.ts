@@ -17,12 +17,12 @@ export const Container = styled.div`
 `;
 
 export const WebLogo = styled.div`
-  margin-top: 25px;
+  margin-top: 15px;
   cursor: pointer;
 `;
 
 export const MenuWrap = styled.div`
-  margin-top: 30px;
+  margin-top: 20px;
   width: 500px;
   display: flex;
   justify-content: space-between;
