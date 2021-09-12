@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { BaseWrapper, HEADER_HEIGHT } from "../../styles";
+import { COLOR } from "./../../styles/index";
 
 export const Wrapper = styled(BaseWrapper)``;
 
@@ -12,6 +13,8 @@ export const Container = styled.div`
     height: 900px;
     background-repeat: no-repeat;
     background-size: cover;
+    position: sticky;
+    top: ${HEADER_HEIGHT};
   }
 `;
 
@@ -20,8 +23,6 @@ export const SliderToIntroWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: sticky;
-  top: ${HEADER_HEIGHT};
 `;
 
 export const IntroContainer = styled.div`
@@ -82,4 +83,60 @@ export const SideLine = styled.div`
   position: absolute;
   background: linear-gradient(white, rgb(255, 255, 255, 0));
   right: 0;
+`;
+
+export const SliderToCollectionsWrap = styled.div`
+  background-image: url("/slider-collections-image.png");
+  display: flex;
+  justify-content: flex-end;
+  transition: 0.5s;
+  .contents-wrap {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-right: 300px;
+    opacity: 0;
+    margin-top: 100px;
+    transition: 1s;
+  }
+  .collections-title {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    & div {
+      width: 170px;
+      height: 1px;
+      background: white;
+    }
+    & h1 {
+      color: white;
+      text-transform: capitalize;
+      font-weight: 300;
+      font-size: 48px;
+    }
+  }
+  .sub-title {
+    color: white;
+    font-size: 24px;
+    font-weight: 300;
+    text-transform: capitalize;
+    margin-top: 50px;
+  }
+  .description {
+    text-align: center;
+    margin-top: 30px;
+    color: ${COLOR.text};
+  }
+  & button {
+    border: 1px solid white;
+    color: white;
+    width: 100%;
+    height: 70px;
+    font-size: 20px;
+    font-weight: 300;
+    margin-top: 50px;
+  }
 `;
