@@ -155,3 +155,122 @@ export const SliderToCollectionsWrap = styled.div`
     margin-top: 50px;
   }
 `;
+
+export const SliderToBrandsWrap = styled.div`
+  background-image: url("/slider-brands-image.png");
+  display: flex;
+  justify-content: flex-start;
+  transition: 0.5s;
+  .contents-wrap {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-left: 300px;
+    margin-top: 200px;
+    transition: 1s;
+    z-index: 2;
+  }
+  .brands-title {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    & div {
+      width: 200px;
+      height: 1px;
+      background: white;
+    }
+    & h1 {
+      color: white;
+      text-transform: capitalize;
+      font-weight: 300;
+      font-size: 48px;
+    }
+  }
+  .sub-title {
+    color: white;
+    font-size: 24px;
+    font-weight: 300;
+    text-transform: capitalize;
+    margin-top: 50px;
+  }
+  .description {
+    text-align: center;
+    margin-top: 30px;
+    color: ${COLOR.text};
+  }
+  & button {
+    border: 1px solid white;
+    color: white;
+    width: 100%;
+    height: 70px;
+    font-size: 20px;
+    font-weight: 300;
+    margin-top: 50px;
+  }
+`;
+
+export const ShadowWrap = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: linear-gradient(to right, rgb(0, 0, 0, 0.8), rgb(0, 0, 0, 0));
+`;
+
+export const SliderToModelsWrap = styled.div`
+  background-image: url("/slider-models-image.png");
+  display: flex;
+  justify-content: flex-end;
+  transition: 0.5s;
+  .contents-wrap {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-right: 300px;
+    margin-top: 200px;
+    transition: 1s;
+    z-index: 2;
+  }
+  .models-title {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    & div {
+      width: 200px;
+      height: 1px;
+      background: white;
+    }
+    & h1 {
+      color: white;
+      text-transform: capitalize;
+      font-weight: 300;
+      font-size: 48px;
+    }
+  }
+  .sub-title {
+    color: white;
+    font-size: 24px;
+    font-weight: 300;
+    text-transform: capitalize;
+    margin-top: 50px;
+  }
+  .description {
+    text-align: center;
+    margin-top: 30px;
+    color: ${COLOR.text};
+  }
+  & button {
+    border: 1px solid white;
+    color: white;
+    width: 100%;
+    height: 70px;
+    font-size: 20px;
+    font-weight: 300;
+    margin-top: 50px;
+  }
+`;
