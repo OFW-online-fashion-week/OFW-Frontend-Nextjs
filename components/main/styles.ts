@@ -5,7 +5,9 @@ import { COLOR } from "./../../styles/index";
 
 export const PAGE_HEIGHT = 900;
 
-export const Wrapper = styled(BaseWrapper)``;
+export const Wrapper = styled(BaseWrapper)`
+  scroll-behavior: smooth;
+`;
 
 export const Container = styled.div`
   width: 100%;

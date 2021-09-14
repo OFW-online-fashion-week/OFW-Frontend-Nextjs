@@ -10,13 +10,24 @@ export const Wrapper = styled(BaseWrapper)`
   .brand-cover-image {
     width: 100%;
     height: 250px;
+    background: blue;
+    position: absolute;
+    z-index: -1;
   }
+`;
+
+export const BiggiestContainer = styled.div`
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
 `;
 
 export const Container = styled.div`
   width: 1120px;
   display: flex;
   flex-direction: column;
+  margin-top: 130px;
   .top-bar {
     width: 100%;
     display: flex;

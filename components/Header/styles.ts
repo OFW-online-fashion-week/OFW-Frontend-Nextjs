@@ -8,6 +8,7 @@ export const Wrapper = styled(BaseWrapper)`
   position: fixed;
   z-index: 5;
   background: white;
+  padding-top: 0px;
 `;
 
 export const Container = styled.div`
