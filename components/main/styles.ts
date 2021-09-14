@@ -18,6 +18,7 @@ export const Container = styled.div`
     background-size: cover;
     position: sticky;
     top: ${HEADER_HEIGHT};
+    padding-bottom: 100px;
   }
 `;
 
