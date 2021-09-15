@@ -32,6 +32,7 @@ export const Container = styled.div`
     width: 100%;
     display: flex;
     align-items: flex-end;
+    position: relative;
   }
   .profile-image {
     width: 220px;
@@ -48,5 +49,16 @@ export const Container = styled.div`
     text-align: center;
     font-size: 18px;
     margin-top: 30px;
+  }
+  .icon-wrap {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    & svg {
+      cursor: pointer;
+    }
   }
 `;

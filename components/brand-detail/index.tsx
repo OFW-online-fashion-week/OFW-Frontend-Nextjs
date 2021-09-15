@@ -1,3 +1,4 @@
+import { HeartIcon, LinkIcon } from "../../assets";
 import CollectionList from "../collection-list";
 import * as S from "./styles";
 
@@ -16,6 +17,10 @@ export default function BrandDetail() {
               src="https://img.freepik.com/free-vector/heraldry-lion-brand-logo-design_260747-104.jpg?size=338&ext=jpg"
             />
             <h1 className="brand-name">Adder Error</h1>
+            <div className="icon-wrap">
+              <LinkIcon callback={() => {}} />
+              <HeartIcon check={true} callback={() => {}} />
+            </div>
           </div>
           <div className="description">
             Pioneer of the ‘New Look’ that would influence the style of the
