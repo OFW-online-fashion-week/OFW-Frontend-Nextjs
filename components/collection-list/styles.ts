@@ -5,7 +5,7 @@ import { COLOR } from "./../../styles/index";
 export const Wrapper = styled(BaseWrapper)``;
 
 export const Container = styled(BaseContainer)`
-  width: 1050px;
+  width: 100%;
   padding-bottom: 100px;
 `;
 

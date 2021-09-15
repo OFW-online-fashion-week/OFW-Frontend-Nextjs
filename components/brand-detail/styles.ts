@@ -10,7 +10,7 @@ export const Wrapper = styled(BaseWrapper)`
   .brand-cover-image {
     width: 100%;
     height: 250px;
-    background: blue;
+    background: whitesmoke;
     position: absolute;
     z-index: -1;
   }

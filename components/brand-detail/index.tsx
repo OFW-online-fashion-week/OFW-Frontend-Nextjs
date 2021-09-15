@@ -1,3 +1,4 @@
+import CollectionList from "../collection-list";
 import * as S from "./styles";
 
 export default function BrandDetail() {
@@ -25,6 +26,7 @@ export default function BrandDetail() {
             sought-after accessories and vintage clothing, start the next
             chapter of the story with our selection of pre-owned Christian Dior.
           </div>
+          <CollectionList margin={30} />
         </S.Container>
       </S.BiggiestContainer>
     </S.Wrapper>

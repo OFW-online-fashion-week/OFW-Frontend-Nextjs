@@ -1,4 +1,4 @@
-import CollectionList from "./../../components/collection-list/index";
+import Collections from "../../components/collections";
 export default function CollectionsPage() {
-  return <CollectionList />;
+  return <Collections />;
 }
