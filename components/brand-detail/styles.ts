@@ -38,6 +38,7 @@ export const Container = styled.div`
     width: 220px;
     height: 220px;
     border-radius: 80%;
+    box-shadow: 0px 0px 5px rgb(0, 0, 0, 0.2);
   }
   .brand-name {
     font-size: 70px;

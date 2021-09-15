@@ -32,6 +32,23 @@ export default function MainPage() {
     };
   }, []);
 
+  React.useEffect(() => {
+    window.onwheel = (e) => {
+      const scrollY = window.scrollY;
+      if (e.deltaY > 0 && scrollY < S.PAGE_HEIGHT * 3) {
+        window.scrollTo({
+          top: (scrollY / S.PAGE_HEIGHT + 1) * S.PAGE_HEIGHT,
+          behavior: "smooth",
+        });
+      } else if (e.deltaY < 0 && scrollY > 100) {
+        window.scrollTo({
+          top: (scrollY / S.PAGE_HEIGHT - 1) * S.PAGE_HEIGHT,
+          behavior: "smooth",
+        });
+      }
+    };
+  }, []);
+
   return (
     <S.Wrapper>
       <S.Container>
