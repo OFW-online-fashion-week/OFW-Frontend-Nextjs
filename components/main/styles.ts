@@ -1,13 +1,11 @@
 import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
-import { BaseWrapper, HEADER_HEIGHT } from "../../styles";
+import { BaseWrapper } from "../../styles";
 import { COLOR } from "./../../styles/index";
 
 export const PAGE_HEIGHT = 900;
 
-export const Wrapper = styled(BaseWrapper)`
-  scroll-behavior: smooth;
-`;
+export const Wrapper = styled(BaseWrapper)``;
 
 export const Container = styled.div`
   width: 100%;
@@ -18,8 +16,6 @@ export const Container = styled.div`
     height: ${`${PAGE_HEIGHT}px`};
     background-repeat: no-repeat;
     background-size: cover;
-    position: sticky;
-    top: ${HEADER_HEIGHT};
     padding-bottom: 100px;
   }
 `;
@@ -217,7 +213,7 @@ export const SliderToBrandsWrap = styled.div`
 
 export const ShadowWrap = styled.div`
   width: 100%;
-  height: 100%;
+  height: ${`${PAGE_HEIGHT}px`};
   position: absolute;
   background: linear-gradient(to right, rgb(0, 0, 0, 0.8), rgb(0, 0, 0, 0));
 `;

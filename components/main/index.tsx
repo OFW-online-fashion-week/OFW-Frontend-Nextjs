@@ -6,6 +6,7 @@ import React from "react";
 import PageToModels from "./PageToModels";
 
 export default function MainPage() {
+  // 스크롤에 따라 글자 나오는 이벤트 발생
   const scrollEvent = React.useCallback((id, indexNum) => {
     const contentsWrap = document.getElementById(id);
     const scrollY = S.PAGE_HEIGHT * indexNum + S.PAGE_HEIGHT / 2;
@@ -29,23 +30,6 @@ export default function MainPage() {
       scrollEvent("collections-contents-wrap", 0);
       scrollEvent("brands-contents-wrap", 1);
       scrollEvent("models-contents-wrap", 2);
-    };
-  }, []);
-
-  React.useEffect(() => {
-    window.onwheel = (e) => {
-      const scrollY = window.scrollY;
-      if (e.deltaY > 0 && scrollY < S.PAGE_HEIGHT * 3) {
-        window.scrollTo({
-          top: (scrollY / S.PAGE_HEIGHT + 1) * S.PAGE_HEIGHT,
-          behavior: "smooth",
-        });
-      } else if (e.deltaY < 0 && scrollY > 100) {
-        window.scrollTo({
-          top: (scrollY / S.PAGE_HEIGHT - 1) * S.PAGE_HEIGHT,
-          behavior: "smooth",
-        });
-      }
     };
   }, []);
 
