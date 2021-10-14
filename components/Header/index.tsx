@@ -1,4 +1,4 @@
-import { LogoIcon } from "../../assets";
+import { HeartIcon, LogoIcon, UserIcon } from "../../assets";
 import * as S from "./styles";
 import React from "react";
 import { useRouter } from "next/dist/client/router";
@@ -19,6 +19,10 @@ export default function Header() {
   return (
     <S.Wrapper>
       <S.Container>
+        <S.IconWrap>
+          <HeartIcon check={false} color="black" size={20} />
+          <UserIcon />
+        </S.IconWrap>
         <S.WebLogo onClick={routingToMain}>
           <LogoIcon />
         </S.WebLogo>

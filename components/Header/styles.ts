@@ -33,3 +33,14 @@ export const MenuWrap = styled.div`
     cursor: pointer;
   }
 `;
+
+export const IconWrap = styled.div`
+  position: absolute;
+  right: 0;
+  padding: 40px 70px;
+  display: flex;
+  gap: 20px;
+  & svg {
+    cursor: pointer;
+  }
+`;
