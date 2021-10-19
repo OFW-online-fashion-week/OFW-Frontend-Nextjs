@@ -29,17 +29,22 @@ button {
   border: none;
   background: none;
   outline: none;
+  font-family: "Noto Sans KR", sans-serif !important;
 }
 
 textarea {
   background: none;
   resize: none;
   outline: none;
+  font-family: "Noto Sans KR", sans-serif !important;
 }
 
 input {
   background: none;
   outline: none;
+  font-family: "Noto Sans KR", sans-serif !important;
+  margin: 0;
+  padding: 0;
 }
 
 img {

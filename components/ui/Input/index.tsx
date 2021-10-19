@@ -1,39 +1,43 @@
 import styled from "@emotion/styled";
-import { FunctionComponent } from "react";
+import { FunctionComponent, HTMLInputTypeAttribute } from "react";
 import { COLOR } from "./../../../styles/index";
 
 interface Props {
   fontSize: number;
   fontWeight?: "thin" | "reguler" | "bold" | "extraBold";
-  isBlack: boolean;
+  color?: "black" | "gray";
   rowPadding?: number;
   columnPadding?: number;
-  callback?(): void;
+  ref?: any;
   marginTop?: number;
   marginBottom?: number;
   marginLeft?: number;
   marginRight?: number;
-  contents: string;
+  placeholder: string;
   className?: string;
   isFull?: boolean;
+  border?: "bottom" | "all";
+  type?: HTMLInputTypeAttribute;
 }
 
-const Button: FunctionComponent<Props> = ({
+const Input: FunctionComponent<Props> = ({
   fontSize,
   fontWeight = "reguler",
-  isBlack,
   rowPadding = 0,
   columnPadding = 0,
-  callback = () => {},
+  ref,
   marginTop,
   marginBottom,
   marginLeft,
   marginRight,
-  contents,
-  isFull,
+  placeholder,
   className,
+  isFull,
+  color = "black",
+  border = "all",
+  type = "text",
 }) => {
-  const BaseButton = styled.button`
+  const BaseInput = styled.input`
     font-size: ${fontSize + "px"};
     font-weight: ${fontWeight === "thin"
       ? 300
@@ -44,21 +48,41 @@ const Button: FunctionComponent<Props> = ({
       : fontWeight === "extraBold"
       ? 800
       : 500};
-    background-color: ${isBlack ? COLOR.text : COLOR.white};
-    color: ${isBlack ? COLOR.white : COLOR.text};
+    color: ${color === "black"
+      ? COLOR.text
+      : color === "gray"
+      ? COLOR.sub_text
+      : ""};
+    border-bottom: 1px solid
+      ${color === "black" ? COLOR.text : color === "gray" ? COLOR.sub_text : ""};
+    border: ${border === "all"
+      ? `1px solid ${
+          color === "black"
+            ? COLOR.text
+            : color === "gray"
+            ? COLOR.sub_text
+            : ""
+        }`
+      : "none"};
     padding: ${columnPadding + "px"} ${rowPadding + "px"};
     margin-top: ${marginTop + "px"};
     margin-bottom: ${marginBottom + "px"};
     margin-left: ${marginLeft + "px"};
     margin-right: ${marginRight + "px"};
     width: ${isFull ? "100%" : "auto"};
-    border: 1px solid ${COLOR.text};
+    &::placeholder {
+      font-size: ${fontSize + "px"};
+      color: ${COLOR.sub_text};
+    }
   `;
   return (
-    <BaseButton onClick={callback} className={className}>
-      {contents}
-    </BaseButton>
+    <BaseInput
+      ref={ref}
+      placeholder={placeholder}
+      className={className}
+      type={type}
+    />
   );
 };
 
-export default Button;
+export default Input;
