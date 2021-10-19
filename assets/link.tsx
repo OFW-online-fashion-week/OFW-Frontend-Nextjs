@@ -1,8 +1,8 @@
-export default function LinkIcon({ callback }) {
+export default function LinkIcon({ callback = () => {}, size = 27 }) {
   return (
     <svg
-      width="25"
-      height="27"
+      width={(size * 25) / 27}
+      height={size}
       viewBox="0 0 32 32"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

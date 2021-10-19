@@ -45,6 +45,9 @@ const Text: FunctionComponent<Props> = ({
     margin-bottom: ${marginBottom + "px"};
     margin-left: ${marginLeft + "px"};
     margin-right: ${marginRight + "px"};
+    white-space: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
   `;
   return <BaseText className={className}>{contents}</BaseText>;
 };
