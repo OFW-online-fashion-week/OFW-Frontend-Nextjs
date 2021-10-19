@@ -2,8 +2,16 @@ import * as S from "./styles";
 import Text from "./../ui/Text/index";
 import Button from "../ui/Button";
 import Input from "../ui/Input";
+import { useRouter } from "next/dist/client/router";
+import { useCallback } from "react";
 
 export default function UserAuth() {
+  const router = useRouter();
+
+  const routingToSignUp = useCallback(() => {
+    router.push("/auth/signup");
+  }, []);
+
   return (
     <S.Wrapper>
       <S.Container>
@@ -43,6 +51,9 @@ export default function UserAuth() {
             isFull={true}
             marginTop={15}
           />
+          <div className="question" onClick={routingToSignUp}>
+            <span>Don't you have account?</span>
+          </div>
           <S.Or>or</S.Or>
           <Button
             isFull={true}

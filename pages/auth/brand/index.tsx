@@ -1,4 +1,4 @@
 import BrandRegistration from "../../../components/brand-ragistration";
-export default function RegistrationPage() {
+export default function BrandAuthPage() {
   return <BrandRegistration />;
 }

@@ -71,9 +71,9 @@ export const BrandPageWrap = styled.div`
   align-items: center;
   & .preview {
     width: 800px;
-    height: 650px;
     background: white;
     position: relative;
+    height: 650px;
   }
   & .cover-img {
     width: 100%;
@@ -93,6 +93,7 @@ export const BrandPageWrap = styled.div`
         width: 150px;
         height: 150px;
         border-radius: 50%;
+        border: 1px solid ${COLOR.sub_text};
       }
       & .icon-wrap {
         display: flex;

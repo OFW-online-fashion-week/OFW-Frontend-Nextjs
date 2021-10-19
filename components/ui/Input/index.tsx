@@ -36,14 +36,11 @@ const BaseInput = styled.input<Props>`
   border-bottom: 1px solid
     ${({ color }) =>
       color === "black" ? COLOR.text : color === "gray" ? COLOR.sub_text : ""};
-  border: ${({ border }) =>
+  border: ${({ border, color }) =>
     border === "all"
-      ? `1px solid ${({ color }) =>
-          color === "black"
-            ? COLOR.text
-            : color === "gray"
-            ? COLOR.sub_text
-            : ""}`
+      ? color === "black"
+        ? `1px solid ${COLOR.text}`
+        : `1px solid ${COLOR.sub_text}`
       : "none"};
   border-bottom: 1px solid
     ${({ border, color }) =>

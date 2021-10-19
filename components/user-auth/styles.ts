@@ -7,6 +7,19 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  & .question {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    & span {
+      text-decoration: underline;
+      color: ${COLOR.text};
+      font-weight: 300;
+      font-size: 15px;
+      cursor: pointer;
+    }
+  }
 `;
 
 export const InputWrap = styled.div`
@@ -21,7 +34,7 @@ export const Or = styled.div`
   align-items: center;
   justify-content: center;
   gap: 20px;
-  margin: 10px 0;
+  margin: 15px 0;
   color: ${COLOR.sub_text};
   font-weight: 300;
   &::after,
