@@ -15,6 +15,7 @@ export const BaseWrapper = styled.div`
   display: flex;
   justify-content: center;
   padding-top: ${HEADER_HEIGHT};
+  padding-bottom: 100px;
 `;
 
 export const BaseContainer = styled.div`

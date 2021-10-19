@@ -64,6 +64,12 @@ const Input: FunctionComponent<Props> = ({
             : ""
         }`
       : "none"};
+    border-bottom: 1px solid
+      ${border === "bottom" && color === "black"
+        ? COLOR.text
+        : color === "gray"
+        ? COLOR.sub_text
+        : ""};
     padding: ${columnPadding + "px"} ${rowPadding + "px"};
     margin-top: ${marginTop + "px"};
     margin-bottom: ${marginBottom + "px"};

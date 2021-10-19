@@ -11,7 +11,7 @@ export const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  .page {
+  & .page {
     width: 100%;
     height: ${`${PAGE_HEIGHT}px`};
     background-repeat: no-repeat;
@@ -43,7 +43,7 @@ export const IntroContainer = styled.div`
   height: 350px;
   position: relative;
   animation: ${introWrapAnime} 1s;
-  .top {
+  & .top {
     position: absolute;
     width: 100%;
     display: flex;
@@ -57,7 +57,7 @@ export const IntroContainer = styled.div`
       margin: 0;
       padding: 0;
     }
-    .welcome {
+    & .welcome {
       width: 100%;
       display: flex;
       justify-content: center;
@@ -80,7 +80,7 @@ export const ContentsContainer = styled.div`
   flex-direction: column;
   width: 100%;
   height: 100%;
-  .intro-ment {
+  & .intro-ment {
     text-align: center;
     margin-top: 60px;
     & p {
@@ -104,7 +104,7 @@ export const SliderToCollectionsWrap = styled.div`
   display: flex;
   justify-content: flex-end;
   transition: 0.5s;
-  .contents-wrap {
+  & .contents-wrap {
     width: 50%;
     display: flex;
     justify-content: center;
@@ -115,7 +115,7 @@ export const SliderToCollectionsWrap = styled.div`
     margin-top: 200px;
     transition: 1s;
   }
-  .collections-title {
+  & .collections-title {
     width: 100%;
     display: flex;
     align-items: center;
@@ -132,17 +132,17 @@ export const SliderToCollectionsWrap = styled.div`
       font-size: 48px;
     }
   }
-  .sub-title {
+  & .sub-title {
     color: white;
     font-size: 24px;
     font-weight: 300;
     text-transform: capitalize;
     margin-top: 50px;
   }
-  .description {
+  & .description {
     text-align: center;
     margin-top: 30px;
-    color: ${COLOR.text};
+    color: ${COLOR.white};
   }
   & button {
     border: 1px solid white;
@@ -160,7 +160,7 @@ export const SliderToBrandsWrap = styled.div`
   display: flex;
   justify-content: flex-start;
   transition: 0.5s;
-  .contents-wrap {
+  & .contents-wrap {
     width: 50%;
     display: flex;
     justify-content: center;
@@ -171,7 +171,7 @@ export const SliderToBrandsWrap = styled.div`
     transition: 1s;
     z-index: 2;
   }
-  .brands-title {
+  & .brands-title {
     width: 100%;
     display: flex;
     align-items: center;
@@ -188,17 +188,17 @@ export const SliderToBrandsWrap = styled.div`
       font-size: 48px;
     }
   }
-  .sub-title {
+  & .sub-title {
     color: white;
     font-size: 24px;
     font-weight: 300;
     text-transform: capitalize;
     margin-top: 50px;
   }
-  .description {
+  & .description {
     text-align: center;
     margin-top: 30px;
-    color: ${COLOR.text};
+    color: ${COLOR.white};
   }
   & button {
     border: 1px solid white;
@@ -223,7 +223,7 @@ export const SliderToModelsWrap = styled.div`
   display: flex;
   justify-content: flex-end;
   transition: 0.5s;
-  .contents-wrap {
+  & .contents-wrap {
     width: 50%;
     display: flex;
     justify-content: center;
@@ -234,7 +234,7 @@ export const SliderToModelsWrap = styled.div`
     transition: 1s;
     z-index: 2;
   }
-  .models-title {
+  & .models-title {
     width: 100%;
     display: flex;
     align-items: center;
@@ -251,17 +251,17 @@ export const SliderToModelsWrap = styled.div`
       font-size: 48px;
     }
   }
-  .sub-title {
+  & .sub-title {
     color: white;
     font-size: 24px;
     font-weight: 300;
     text-transform: capitalize;
     margin-top: 50px;
   }
-  .description {
+  & .description {
     text-align: center;
     margin-top: 30px;
-    color: ${COLOR.text};
+    color: ${COLOR.white};
   }
   & button {
     border: 1px solid white;
