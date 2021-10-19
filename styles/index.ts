@@ -3,7 +3,9 @@ import styled from "@emotion/styled";
 export const COLOR = {
   main: "#5AC18E",
   pink: "#F7347A",
-  text: "#999999",
+  text: "#222222",
+  sub_text: "#999999",
+  white: "#fff",
 };
 
 export const HEADER_HEIGHT = "150px";
