@@ -11,12 +11,36 @@ export default function BrandRegistration() {
   const descriptionRef = useRef<HTMLTextAreaElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const urlRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+  const checkPasswordRef = useRef<HTMLInputElement>(null);
   const [isPreview, setIsPreview] = useState<boolean>(false);
   const [brandImgPreview, setBrandImgPreview] = useState<string>(null);
   const [brandCoverImgFileName, setBrandCoverImgFileName] =
     useState<string>(null);
   const [brandCoverImgPreview, setBrandCoverImgPreview] =
     useState<string>(null);
+  const inputArr = [
+    {
+      content: "Name",
+      ref: nameRef,
+    },
+    {
+      content: "E-mail",
+      ref: emailRef,
+    },
+    {
+      content: "URL",
+      ref: urlRef,
+    },
+    {
+      content: "Password",
+      ref: passwordRef,
+    },
+    {
+      content: "Check Password",
+      ref: checkPasswordRef,
+    },
+  ];
 
   const getBrandImg = useCallback((event) => {
     getFileData(event).then((res) => {
@@ -79,36 +103,19 @@ export default function BrandRegistration() {
             )}
           </label>
         </S.BrandImg>
-        <Input
-          fontSize={16}
-          fontWeight="thin"
-          color="gray"
-          border="bottom"
-          placeholder="Name"
-          columnPadding={15}
-          marginTop={10}
-          inputRef={nameRef}
-        />
-        <Input
-          fontSize={16}
-          fontWeight="thin"
-          color="gray"
-          border="bottom"
-          placeholder="E-mail"
-          columnPadding={15}
-          marginTop={15}
-          inputRef={emailRef}
-        />
-        <Input
-          fontSize={16}
-          fontWeight="thin"
-          color="gray"
-          border="bottom"
-          placeholder="URL"
-          columnPadding={15}
-          marginTop={15}
-          inputRef={urlRef}
-        />
+        {inputArr.map((item, index) => (
+          <Input
+            fontSize={16}
+            fontWeight="thin"
+            color="gray"
+            border="bottom"
+            placeholder={item.content}
+            columnPadding={15}
+            marginTop={15}
+            inputRef={item.ref}
+            key={index}
+          />
+        ))}
         <S.TextArea placeholder="Description" ref={descriptionRef} />
         <S.CoverUpload>
           <Button
