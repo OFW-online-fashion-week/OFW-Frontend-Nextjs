@@ -31,7 +31,8 @@ export const ColumnCard = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  .cover-img {
+  .cover-img,
+  .add-wrap {
     width: 100%;
     height: 480px;
     cursor: pointer;
@@ -40,8 +41,19 @@ export const ColumnCard = styled.div`
       opacity: 0.7;
     }
   }
+  .add-wrap {
+    background: linear-gradient(
+      180deg,
+      rgba(90, 193, 142, 0.5) 0%,
+      rgba(247, 52, 122, 0.5) 100%
+    );
+    font-size: 100px;
+    font-weight: 600;
+    color: ${COLOR.white};
+  }
   .collection-title {
-    font-size: 22px;
+    font-size: 20px;
+    font-weight: 500;
     margin-top: 25px;
     cursor: pointer;
     transition: 0.5s;

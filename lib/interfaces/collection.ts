@@ -3,4 +3,5 @@ export interface CollectionCard {
   description: string;
   coverImg: string;
   id: string | number;
+  isAdd?: boolean;
 }

@@ -1,15 +1,24 @@
 import * as S from "./styles";
 import { CollectionCard } from "./../../lib/interfaces/collection";
 
+interface Props extends CollectionCard {
+  isAdd?: boolean;
+}
+
 export default function CollectionColumnCard({
   title,
   description,
   coverImg,
   id,
-}: CollectionCard) {
+  isAdd,
+}: Props) {
   return (
     <S.ColumnCard>
-      <img src={coverImg} className="cover-img" />
+      {isAdd ? (
+        <button className="add-wrap">+</button>
+      ) : (
+        <img src={coverImg} className="cover-img" />
+      )}
       <h1 className="collection-title">{title}</h1>
       <p className="collection-description">
         {description.length > 100

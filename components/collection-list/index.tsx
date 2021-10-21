@@ -5,7 +5,11 @@ import React from "react";
 import * as S from "./styles";
 import { listData } from "./listData";
 
-export default function CollectionList({ dataList = listData, margin }) {
+export default function CollectionList({
+  dataList = listData,
+  margin,
+  isMine = false,
+}) {
   const [isColumn, setIsColumn] = React.useState<boolean>(true);
 
   const sortToColumn = React.useCallback(() => {
@@ -23,7 +27,7 @@ export default function CollectionList({ dataList = listData, margin }) {
         <ColumnListIcon isColumn={isColumn} callback={sortToColumn} />
       </S.ListShowMethodSelector>
       {isColumn ? (
-        <CollectionColumnList data={dataList} />
+        <CollectionColumnList data={dataList} isMine={isMine} />
       ) : (
         <CollectionRowList data={dataList} />
       )}
