@@ -1,19 +1,23 @@
 import { HeartIcon, LogoIcon, UserIcon } from "../../assets";
 import * as S from "./styles";
-import React from "react";
+import { useCallback } from "react";
 import { useRouter } from "next/dist/client/router";
 
 export default function Header() {
   const router = useRouter();
 
-  const routingToMain = React.useCallback(() => {
+  const routingToMain = useCallback(() => {
     router.push("/");
   }, []);
 
-  const routing = React.useCallback(({ target }) => {
+  const routing = useCallback(({ target }) => {
     if (target.id !== "menu-wrap") {
       router.push(`/${target.innerHTML}`);
     }
+  }, []);
+
+  const routingToAuth = useCallback(() => {
+    router.push("/auth/user");
   }, []);
 
   return (
@@ -21,7 +25,7 @@ export default function Header() {
       <S.Container>
         <S.IconWrap>
           <HeartIcon check={false} color="black" size={20} />
-          <UserIcon />
+          <UserIcon callback={routingToAuth} />
         </S.IconWrap>
         <S.WebLogo onClick={routingToMain}>
           <LogoIcon />

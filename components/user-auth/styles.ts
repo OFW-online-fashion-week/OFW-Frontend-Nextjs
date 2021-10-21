@@ -26,7 +26,33 @@ export const InputWrap = styled.div`
   display: flex;
   flex-direction: column;
   width: 300px;
-  margin-top: 15px;
+  margin-top: 20px;
+`;
+
+export const ChangeWrap = styled.div`
+  border-radius: 24px;
+  border: 1px solid ${COLOR.text};
+  width: 110px;
+  padding: 3px;
+  box-sizing: content-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  position: relative;
+  & span {
+    font-size: 12px;
+    color: ${COLOR.text};
+    margin: 0 5px;
+  }
+  & button {
+    width: 40%;
+    height: calc(100% - 6px);
+    border-radius: 24px;
+    position: absolute;
+    background: ${COLOR.main};
+    margin: 0 3px;
+  }
 `;
 
 export const Or = styled.div`

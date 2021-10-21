@@ -3,14 +3,23 @@ import Text from "./../ui/Text/index";
 import Button from "../ui/Button";
 import Input from "../ui/Input";
 import { useRouter } from "next/dist/client/router";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 
 export default function UserAuth() {
+  const [isCostomer, setIsCostomer] = useState<boolean>(true);
   const router = useRouter();
 
-  const routingToSignUp = useCallback(() => {
-    router.push("/auth/signup");
+  const routingToUserSignUp = useCallback(() => {
+    router.push("/auth/signup/user");
   }, []);
+
+  const routingToBrandSignUp = useCallback(() => {
+    router.push("/auth/signup/brand");
+  }, []);
+
+  const changeUser = useCallback(() => {
+    setIsCostomer(!isCostomer);
+  }, [isCostomer]);
 
   return (
     <S.Wrapper>
@@ -23,6 +32,11 @@ export default function UserAuth() {
           marginTop={9}
           color="gray"
         />
+        <S.ChangeWrap>
+          <button onClick={changeUser} style={isCostomer ? { right: 0 } : {}} />
+          <span>{isCostomer && "Customer"}</span>
+          <span>{!isCostomer && "Brand"}</span>
+        </S.ChangeWrap>
         <S.InputWrap>
           <Input
             isFull={true}
@@ -51,18 +65,26 @@ export default function UserAuth() {
             isFull={true}
             marginTop={15}
           />
-          <div className="question" onClick={routingToSignUp}>
-            <span>Don't you have account?</span>
+          <div className="question">
+            {isCostomer ? (
+              <span onClick={routingToUserSignUp}>Don't you have account?</span>
+            ) : (
+              <span onClick={routingToBrandSignUp}>Go to brand register</span>
+            )}
           </div>
-          <S.Or>or</S.Or>
-          <Button
-            isFull={true}
-            fontWeight="reguler"
-            fontSize={15}
-            contents="SIGN UP WITH GOOGLE"
-            isBlack={false}
-            columnPadding={13}
-          />
+          {isCostomer && (
+            <>
+              <S.Or>or</S.Or>
+              <Button
+                isFull={true}
+                fontWeight="reguler"
+                fontSize={15}
+                contents="SIGN UP WITH GOOGLE"
+                isBlack={false}
+                columnPadding={13}
+              />
+            </>
+          )}
         </S.InputWrap>
       </S.Container>
     </S.Wrapper>
