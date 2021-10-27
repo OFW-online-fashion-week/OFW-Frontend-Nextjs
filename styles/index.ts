@@ -6,6 +6,8 @@ export const COLOR = {
   text: "#222222",
   sub_text: "#999999",
   white: "#fff",
+  admin_background: "#222222",
+  yellow: "#FFF68F",
 };
 
 export const HEADER_HEIGHT = "150px";
