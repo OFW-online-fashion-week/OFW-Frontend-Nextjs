@@ -1,5 +1,6 @@
 import * as S from "./styles";
 import Text from "./../ui/Text/index";
+import RunwayList from "./RunwayList";
 
 export default function CollectionDetail() {
   return (
@@ -38,6 +39,7 @@ export default function CollectionDetail() {
           </div>
         </S.DesingerWrap>
       </S.Container>
+      <RunwayList />
     </S.Wrapper>
   );
 }

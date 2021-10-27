@@ -1,7 +1,12 @@
 import styled from "@emotion/styled";
 import { BaseContainer, BaseWrapper, COLOR } from "./../../styles/index";
 
-export const Wrapper = styled(BaseWrapper)``;
+export const Wrapper = styled(BaseWrapper)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 0;
+`;
 
 export const Container = styled(BaseContainer)`
   display: flex;
@@ -64,6 +69,41 @@ export const DesingerWrap = styled.div`
       font-weight: 300;
       color: ${COLOR.text};
       word-break: break-all;
+    }
+  }
+`;
+
+export const RunwayWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 50px;
+  gap: 30px;
+  & h1 {
+    font-size: 36px;
+    font-weight: 400;
+    color: ${COLOR.text};
+    text-align: center;
+  }
+`;
+
+export const RunwayList = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  & .cover-wrap {
+    width: 100%;
+    height: 960px;
+    position: relative;
+    overflow: hidden;
+  }
+  & img {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover {
+      transform: scale(1.1);
     }
   }
 `;
