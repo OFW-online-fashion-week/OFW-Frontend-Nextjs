@@ -1,12 +1,17 @@
 import * as S from "./styles";
+import { useRouter } from "next/dist/client/router";
 
 export default function RunwayList() {
+  const router = useRouter();
   return (
     <S.RunwayWrap>
       <h1>Runways</h1>
       <S.RunwayList>
         <div className="cover-wrap">
-          <img src="http://talkimg.imbc.com/TVianUpload/tvian/TViews/image/2018/10/20/KSK1X9kfGGlX636756537893829737.jpg" />
+          <img
+            onClick={() => router.push("/runway")}
+            src="http://talkimg.imbc.com/TVianUpload/tvian/TViews/image/2018/10/20/KSK1X9kfGGlX636756537893829737.jpg"
+          />
         </div>
         <div className="cover-wrap">
           <img src="https://lh3.googleusercontent.com/proxy/mPqDqKs7-tnKwc4a0-YIu5f5_2GG7kE_zevlkJksrtR_7IXzvwoSoHtyoCcltb5NVTYFuhOjxXg4uVav0z77fKIYYYQm90hdptm3nRuHY4RkNtTR-i43BurVAiYK9yrK" />
