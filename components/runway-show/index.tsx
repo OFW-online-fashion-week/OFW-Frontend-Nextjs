@@ -1,10 +1,14 @@
 import * as S from "./styles";
 import { useEffect } from "react";
 import { InfoIcon, LogoIcon } from "../../assets";
+import { useRouter } from "next/dist/client/router";
+import Button from "../ui/Button";
 
 export default function RunwayShow() {
+  const router = useRouter();
+
   const videoControl = () => {
-    const deltaTime = 0.05;
+    const deltaTime = 0.1;
     const video = document.querySelector("video");
     window.addEventListener("wheel", (event) => {
       if (event.deltaY > 0 && video.currentTime < video.duration) {
@@ -21,14 +25,19 @@ export default function RunwayShow() {
   return (
     <S.Wrapper>
       <S.Header>
-        <button>
+        <button onClick={() => router.push("/")}>
           <LogoIcon color="white" />
         </button>
       </S.Header>
       <S.Footer>
-        <InfoIcon />
+        <button>
+          <InfoIcon />
+        </button>
       </S.Footer>
-      <video src="/runway.mp4" id="video" />
+      <S.SideBar>
+        <button>Model</button>
+      </S.SideBar>
+      <video src="/runway2.mp4" id="video" />
     </S.Wrapper>
   );
 }

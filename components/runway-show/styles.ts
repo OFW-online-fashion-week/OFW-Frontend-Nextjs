@@ -9,10 +9,12 @@ export const Wrapper = styled.div`
   background: white;
   position: absolute;
   z-index: 10;
+  background-color: ${COLOR.admin_background};
+  overflow: hidden;
   & video {
     width: 100%;
     height: 100%;
-    object-fit: fill;
+    object-fit: cover;
   }
 `;
 
@@ -34,4 +36,24 @@ export const Footer = styled.footer`
   z-index: 11;
   bottom: 0;
   padding-bottom: 20px;
+`;
+
+export const SideBar = styled.div`
+  position: absolute;
+  z-index: 11;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  transform: translateX(80px);
+  & button {
+    height: 50px;
+    width: 200px;
+    background: ${COLOR.main};
+    color: ${COLOR.white};
+    font-size: 18px;
+    transform: rotate(-90deg);
+    border-radius: 5px;
+  }
 `;
