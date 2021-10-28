@@ -30,25 +30,24 @@ const Text: FunctionComponent<Props> = ({
   const BaseText = styled.div`
     text-align: ${center ? "center" : ""};
     font-size: ${size + "px"};
-    font-weight: ${
-      weight === "thin"
-        ? 300
-        : weight === "reguler"
-        ? 500
-        : weight === "bold"
-        ? 600
-        : weight === "extraBold"
-        ? 800
-        : 500
-    };
-    color: ${
-      color === "black" ? COLOR.text : color === "gray" ? COLOR.sub_text : ""
-    };
+    font-weight: ${weight === "thin"
+      ? 300
+      : weight === "reguler"
+      ? 500
+      : weight === "bold"
+      ? 600
+      : weight === "extraBold"
+      ? 800
+      : 500};
+    color: ${color === "black"
+      ? COLOR.text
+      : color === "gray"
+      ? COLOR.sub_text
+      : ""};
     margin-top: ${marginTop + "px"};
     margin-bottom: ${marginBottom + "px"};
     margin-left: ${marginLeft + "px"};
     margin-right: ${marginRight + "px"};
-    breakwo
   `;
   return <BaseText className={className}>{contents}</BaseText>;
 };
