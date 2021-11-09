@@ -3,11 +3,13 @@ import Text from "./../ui/Text/index";
 import Button from "../ui/Button";
 import Input from "../ui/Input";
 import { useRouter } from "next/dist/client/router";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export default function UserAuth() {
   const [isCostomer, setIsCostomer] = useState<boolean>(true);
   const router = useRouter();
+  const emailRef = useRef<HTMLInputElement>(null);
+  const pswRef = useRef<HTMLInputElement>(null);
 
   const routingToUserSignUp = useCallback(() => {
     router.push("/auth/signup/user");
@@ -20,6 +22,16 @@ export default function UserAuth() {
   const changeUser = useCallback(() => {
     setIsCostomer(!isCostomer);
   }, [isCostomer]);
+
+  const signIn = () => {
+    const email = emailRef.current.value;
+    const psw = pswRef.current.value;
+    if (email === "admin" && psw === "fprhwhdk1214") {
+      router.push("/admin");
+    } else {
+      alert("ㅄ");
+    }
+  };
 
   return (
     <S.Wrapper>
@@ -45,6 +57,7 @@ export default function UserAuth() {
             rowPadding={15}
             columnPadding={13}
             placeholder="write your email"
+            inputRef={emailRef}
           />
           <Input
             isFull={true}
@@ -55,6 +68,7 @@ export default function UserAuth() {
             placeholder="write your password"
             marginTop={5}
             type="password"
+            inputRef={pswRef}
           />
           <Button
             fontSize={20}
@@ -64,6 +78,7 @@ export default function UserAuth() {
             columnPadding={13}
             isFull={true}
             marginTop={15}
+            callback={signIn}
           />
           <div className="question">
             {isCostomer ? (
