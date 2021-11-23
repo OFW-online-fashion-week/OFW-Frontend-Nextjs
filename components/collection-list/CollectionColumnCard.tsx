@@ -23,7 +23,12 @@ export default function CollectionColumnCard({
   return (
     <S.ColumnCard>
       {isAdd ? (
-        <button className="add-wrap">+</button>
+        <button
+          className="add-wrap"
+          onClick={() => router.push("/collectionRegist")}
+        >
+          +
+        </button>
       ) : (
         <img
           src={coverImg}
