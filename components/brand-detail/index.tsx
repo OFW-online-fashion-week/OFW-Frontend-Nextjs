@@ -1,39 +1,36 @@
 import { HeartIcon, LinkIcon } from "../../assets";
 import CollectionList from "../collection-list";
 import * as S from "./styles";
+import brand from "../../api/brand";
+import { useEffect, useState } from "react";
 
 export default function BrandDetail() {
+  const [data, setData] = useState<any>();
+  useEffect(() => {
+    brand.getBrandDetail(1).then((res) => {
+      console.log(res.data);
+      setData(res.data);
+    });
+  }, []);
   return (
     <S.Wrapper>
-      <S.BiggiestContainer>
-        <img
-          src="https://cdn.shopify.com/s/files/1/0048/6817/7984/products/il_fullxfull.1540907234_91wa_1024x1024.jpg?v=1549647535"
-          className="brand-cover-image"
-        />
-        <S.Container>
-          <div className="top-bar">
-            <img
-              className="profile-image"
-              src="https://img.freepik.com/free-vector/heraldry-lion-brand-logo-design_260747-104.jpg?size=338&ext=jpg"
-            />
-            <h1 className="brand-name">Adder Error</h1>
-            <div className="icon-wrap">
-              <LinkIcon callback={() => {}} />
-              <HeartIcon check={true} callback={() => {}} />
+      {data && (
+        <S.BiggiestContainer>
+          <img src={data.cover_url} className="brand-cover-image" />
+          <S.Container>
+            <div className="top-bar">
+              <img className="profile-image" src={data.profile_url} />
+              <h1 className="brand-name">{data.name}</h1>
+              <div className="icon-wrap">
+                <LinkIcon callback={() => window.open(data.url)} />
+                <HeartIcon check={true} callback={() => {}} />
+              </div>
             </div>
-          </div>
-          <div className="description">
-            Pioneer of the ‘New Look’ that would influence the style of the
-            1950s, there are few designers quite as influential as Christian
-            Dior. <br /> An icon then and now, the French maison continues to be
-            a leading force in innovative fashion. From the inimitable Saddle
-            bag to <br />
-            sought-after accessories and vintage clothing, start the next
-            chapter of the story with our selection of pre-owned Christian Dior.
-          </div>
-          <CollectionList margin={30} isMine={true} />
-        </S.Container>
-      </S.BiggiestContainer>
+            <div className="description">{data.description}</div>
+            <CollectionList margin={30} isMine={true} />
+          </S.Container>
+        </S.BiggiestContainer>
+      )}
     </S.Wrapper>
   );
 }

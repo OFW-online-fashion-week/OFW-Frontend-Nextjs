@@ -1,24 +1,20 @@
 import React from "react";
 import * as S from "./styles";
-import SpellCard from "./SpellCard";
+import { useRouter } from "next/dist/client/router";
 
 export default function BrandSearch() {
-  const [spellArr, setSpellArr] = React.useState<string[]>([]);
-
-  React.useEffect(() => {
-    let tmpArr = [];
-    for (let i = 97; i <= 122; i++) {
-      tmpArr.push(String.fromCharCode(i));
-    }
-    setSpellArr(tmpArr);
-  }, []);
-
+  const router = useRouter();
   return (
     <S.Wrapper>
       <S.Container>
-        {spellArr.map((item, index) => (
-          <SpellCard spell={item} key={index} />
-        ))}
+        <h1 className="title">A</h1>
+        <S.BrandContainer>
+          <span onClick={() => router.push("/brands/1")}>adder error</span>
+          <span onClick={() => router.push("/brands/1")}>adder error</span>
+          <span onClick={() => router.push("/brands/1")}>adder error</span>
+          <span onClick={() => router.push("/brands/1")}>adder error</span>
+          <span onClick={() => router.push("/brands/1")}>adder error</span>
+        </S.BrandContainer>
       </S.Container>
     </S.Wrapper>
   );

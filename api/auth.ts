@@ -8,7 +8,6 @@ export default {
     });
   },
   brandSignUp({ profile, cover, name, email, psw, url, des }) {
-    console.log(cover);
     return request({
       method: "post",
       url: "/auth/brand/signup",

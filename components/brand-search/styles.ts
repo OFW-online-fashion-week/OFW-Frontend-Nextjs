@@ -4,26 +4,23 @@ import { BaseContainer, BaseWrapper } from "../../styles";
 export const Wrapper = styled(BaseWrapper)``;
 
 export const Container = styled(BaseContainer)`
-  margin-top: 30px;
-  margin-bottom: 100px;
-  display: grid;
-  grid-template-columns: repeat(4, 180px);
-  grid-row-gap: 60px;
-  justify-content: space-between;
-`;
-
-export const SpellCard = styled.div`
-  width: 100%;
-  word-break: break-all;
-  .title {
-    font-size: 30px;
-    font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  & .title {
+    font-size: 200px;
+    font-weight: 700;
     text-transform: uppercase;
   }
-  .brand-name {
-    font-size: 18px;
+`;
+
+export const BrandContainer = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  & span {
+    font-size: 20px;
     font-weight: 300;
-    margin-top: 20px;
+    margin-top: 30px;
     cursor: pointer;
     &:hover {
       text-decoration: underline;
