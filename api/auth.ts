@@ -1,31 +1,26 @@
 import request from "./axios";
 
 export default {
-  fileUpload({ file }) {
-    const fd = new FormData();
-    fd.append("file", file);
+  getGoogleLink() {
     return request({
-      method: "post",
-      url: "/upload",
-      headers: {
-        "Content-type": "multipart/form-data",
-      },
-      data: fd,
+      method: "get",
+      url: "/auth/google",
     });
   },
-  brandSignUp({
-    profileUrl,
-    coverUrl,
-    name,
-    email,
-    password,
-    url,
-    description,
-  }) {
+  brandSignUp({ profile, cover, name, email, psw, url, des }) {
+    console.log(cover);
     return request({
       method: "post",
       url: "/auth/brand/signup",
-      data: { profileUrl, coverUrl, name, email, password, url, description },
+      data: {
+        profile_url: profile,
+        cover_url: cover,
+        name: name,
+        email: email,
+        password: psw,
+        url: url,
+        description: des,
+      },
     });
   },
 };

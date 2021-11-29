@@ -5,6 +5,8 @@ import Button from "../ui/Button";
 import { useCallback, useRef, useState } from "react";
 import { getFileData } from "./../../lib/util/getFileData";
 import BrandPagePreview from "./BrandPagePreview";
+import file from "../../api/file";
+import auth from "../../api/auth";
 
 export default function BrandRegistration() {
   const nameRef = useRef<HTMLInputElement>(null);
@@ -13,6 +15,8 @@ export default function BrandRegistration() {
   const urlRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const checkPasswordRef = useRef<HTMLInputElement>(null);
+  const [brandImg, setBrandImg] = useState("");
+  const [brandCover, setBrandCover] = useState("");
   const [isPreview, setIsPreview] = useState<boolean>(false);
   const [brandImgPreview, setBrandImgPreview] = useState<string>(null);
   const [brandCoverImgFileName, setBrandCoverImgFileName] =
@@ -45,6 +49,9 @@ export default function BrandRegistration() {
   const getBrandImg = useCallback((event) => {
     getFileData(event).then((res) => {
       setBrandImgPreview(res.preview);
+      file.getS3Link(res.file).then((res) => {
+        setBrandImg(res.data);
+      });
     });
   }, []);
 
@@ -52,6 +59,9 @@ export default function BrandRegistration() {
     getFileData(event).then((res) => {
       setBrandCoverImgFileName(res.file.name);
       setBrandCoverImgPreview(res.preview);
+      file.getS3Link(res.file).then((res) => {
+        setBrandCover(res.data);
+      });
     });
   }, []);
 
@@ -62,6 +72,31 @@ export default function BrandRegistration() {
   const openPreview = useCallback(() => {
     setIsPreview(true);
   }, []);
+
+  const getBrandInfor = () => {
+    const name = nameRef.current.value;
+    const email = emailRef.current.value;
+    const url = urlRef.current.value;
+    const password = passwordRef.current.value;
+    const description = descriptionRef.current.value;
+    if (checkPasswordRef.current.value !== password) {
+      alert("check password");
+      return;
+    }
+    auth
+      .brandSignUp({
+        cover: brandCover,
+        profile: brandImg,
+        name: name,
+        url: url,
+        email: email,
+        des: description,
+        psw: password,
+      })
+      .then(() => {
+        alert("됬다");
+      });
+  };
 
   return (
     <S.Wrapper>
@@ -152,6 +187,7 @@ export default function BrandRegistration() {
           columnPadding={15}
           contents="SUBMIT"
           marginTop={20}
+          callback={getBrandInfor}
         />
       </S.Container>
     </S.Wrapper>

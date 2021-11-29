@@ -8,7 +8,7 @@ interface Props {
   isBlack: boolean;
   rowPadding?: number;
   columnPadding?: number;
-  callback?(): void;
+  callback?(any): void;
   marginTop?: number;
   marginBottom?: number;
   marginLeft?: number;
