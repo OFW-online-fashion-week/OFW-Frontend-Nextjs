@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as S from "./styles";
 import { useRouter } from "next/dist/client/router";
+import brand from "../../api/brand";
 
 export default function BrandSearch() {
   const [spellArr, setSpellArr] = React.useState<string[]>([]);
   const [nowSpell, setNowSpell] = useState<any>("a");
+  const [brandArr, setBrandArr] = useState<any[]>([]);
   const router = useRouter();
   React.useEffect(() => {
     let tmpArr = [];
@@ -12,6 +14,11 @@ export default function BrandSearch() {
       tmpArr.push(String.fromCharCode(i));
     }
     setSpellArr(tmpArr);
+  }, []);
+  useEffect(() => {
+    brand.getBrandList(nowSpell).then((res) => {
+      setBrandArr(res.data.brandContentResponseList);
+    });
   }, []);
   return (
     <S.Wrapper>
@@ -31,11 +38,14 @@ export default function BrandSearch() {
           A<b>PART</b>
         </h1>
         <S.BrandContainer>
-          <span onClick={() => router.push("/brands/1")}>adder error</span>
-          <span onClick={() => router.push("/brands/1")}>adder error</span>
-          <span onClick={() => router.push("/brands/1")}>adder error</span>
-          <span onClick={() => router.push("/brands/1")}>adder error</span>
-          <span onClick={() => router.push("/brands/1")}>adder error</span>
+          {brandArr.map((brand, index) => (
+            <span
+              key={index}
+              onClick={() => router.push(`/brands/${brand.id}`)}
+            >
+              {brand.name}
+            </span>
+          ))}
         </S.BrandContainer>
       </S.Container>
     </S.Wrapper>

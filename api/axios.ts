@@ -1,7 +1,7 @@
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from "axios";
 
 const instance: AxiosInstance = axios.create({
-  baseURL: "http://172.20.10.4:8081/",
+  baseURL: "http://192.168.137.164:8081/",
   timeout: 10000,
 });
 instance.interceptors.request.use(
