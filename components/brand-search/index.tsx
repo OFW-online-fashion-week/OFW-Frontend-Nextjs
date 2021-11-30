@@ -19,7 +19,7 @@ export default function BrandSearch() {
     brand.getBrandList(nowSpell).then((res) => {
       setBrandArr(res.data.brandContentResponseList);
     });
-  }, []);
+  }, [nowSpell]);
   return (
     <S.Wrapper>
       <S.SideWrap>
@@ -35,7 +35,8 @@ export default function BrandSearch() {
       </S.SideWrap>
       <S.Container>
         <h1 className="title">
-          A<b>PART</b>
+          {nowSpell}
+          <b>PART</b>
         </h1>
         <S.BrandContainer>
           {brandArr.map((brand, index) => (

@@ -57,22 +57,24 @@ export default function UserAuth() {
         })
         .then((res) => {
           const accessToken = res.data.accessToken;
-          localStorage.setItem(A_TOKEN, accessToken);
-          alert("success login");
-          router.push("/");
-        })
-        .catch((err) => {
-          const status = err.response.status;
-          if (status == 404) {
+          const email = res.data.email;
+          if (accessToken) {
+            localStorage.setItem(A_TOKEN, accessToken);
+            alert("success login");
+            router.push("/");
+          } else {
             const name = prompt("welcome to signup! enter your name");
             auth
               .userRegist({
                 name: name,
                 aud: "user",
-                code: code,
+                email: email,
               })
               .then((res) => {
-                console.log(res.data);
+                const accessToken = res.data.accessToken;
+                alert("success signup and login");
+                localStorage.setItem(A_TOKEN, accessToken);
+                router.push("/");
               });
           }
         });

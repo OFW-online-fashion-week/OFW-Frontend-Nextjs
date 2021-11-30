@@ -17,12 +17,12 @@ export default {
       },
     });
   },
-  userRegist({ name, code, aud }): any {
+  userRegist({ name, email, aud }): any {
     return request({
       method: "post",
       url: "/auth/user/signup",
       data: {
-        code: code,
+        email: email,
         name: name,
         aud: aud,
       },
