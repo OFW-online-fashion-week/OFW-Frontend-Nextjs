@@ -17,6 +17,7 @@ interface Props {
   border?: "bottom" | "all";
   type?: HTMLInputTypeAttribute;
   inputRef?: any;
+  onChange?(any): void;
 }
 
 const BaseInput = styled.input<Props>`
@@ -77,6 +78,7 @@ const Input: FunctionComponent<Props> = ({
   border = "all",
   type = "text",
   inputRef,
+  onChange,
 }) => {
   return (
     <BaseInput
@@ -94,6 +96,7 @@ const Input: FunctionComponent<Props> = ({
       isFull={isFull}
       color={color}
       border={border}
+      onChange={onChange}
     />
   );
 };

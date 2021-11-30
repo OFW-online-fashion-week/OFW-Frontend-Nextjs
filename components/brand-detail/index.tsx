@@ -5,6 +5,8 @@ import brand from "../../api/brand";
 import { useEffect, useState } from "react";
 import like from "../../api/like";
 import { useRouter } from "next/dist/client/router";
+import { BRAND_ID } from "../../lib/export/localstorage";
+import { AUD } from "./../../lib/export/localstorage";
 
 export default function BrandDetail() {
   const [data, setData] = useState<any>();
@@ -38,7 +40,13 @@ export default function BrandDetail() {
               </div>
             </div>
             <div className="description">{data.description}</div>
-            <CollectionList margin={30} isMine={true} />
+            <CollectionList
+              margin={30}
+              isMine={
+                router.query.id === localStorage.getItem(BRAND_ID) &&
+                localStorage.getItem(AUD) === "brand"
+              }
+            />
           </S.Container>
         </S.BiggiestContainer>
       )}
