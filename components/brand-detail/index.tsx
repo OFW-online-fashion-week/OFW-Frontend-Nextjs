@@ -8,7 +8,6 @@ export default function BrandDetail() {
   const [data, setData] = useState<any>();
   useEffect(() => {
     brand.getBrandDetail(1).then((res) => {
-      console.log(res.data);
       setData(res.data);
     });
   }, []);

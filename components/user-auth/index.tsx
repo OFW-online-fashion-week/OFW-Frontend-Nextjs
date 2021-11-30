@@ -4,9 +4,12 @@ import Button from "../ui/Button";
 import Input from "../ui/Input";
 import { useRouter } from "next/dist/client/router";
 import { useCallback, useEffect, useRef, useState } from "react";
+import auth from "../../api/auth";
+import { A_TOKEN } from "./../../lib/export/localstorage";
 
 export default function UserAuth() {
   const [isCostomer, setIsCostomer] = useState<boolean>(true);
+  const [isEnd, setIsEnd] = useState(false);
   const router = useRouter();
   const emailRef = useRef<HTMLInputElement>(null);
   const pswRef = useRef<HTMLInputElement>(null);
@@ -28,10 +31,53 @@ export default function UserAuth() {
     const psw = pswRef.current.value;
     if (email === "admin" && psw === "fprhwhdk1214") {
       router.push("/admin");
+    }
+    if (isCostomer) {
     } else {
-      alert("ㅄ");
+      auth.brandLogin({ id: email, psw: psw }).then((res) => {
+        console.log(res.data);
+      });
     }
   };
+
+  const googleAuth = () => {
+    auth.getGoogleLink().then((res) => {
+      window.open(res.data.link);
+    });
+  };
+
+  useEffect(() => {
+    const code = router.query.code;
+    if (code && !isEnd) {
+      setIsEnd(true);
+      auth
+        .userSignup({
+          code: code,
+          aud: "user",
+        })
+        .then((res) => {
+          const accessToken = res.data.accessToken;
+          localStorage.setItem(A_TOKEN, accessToken);
+          alert("success login");
+          router.push("/");
+        })
+        .catch((err) => {
+          const status = err.response.status;
+          if (status == 404) {
+            const name = prompt("welcome to signup! enter your name");
+            auth
+              .userRegist({
+                name: name,
+                aud: "user",
+                code: code,
+              })
+              .then((res) => {
+                console.log(res.data);
+              });
+          }
+        });
+    }
+  }, [router]);
 
   return (
     <S.Wrapper>
@@ -97,6 +143,7 @@ export default function UserAuth() {
                 contents="SIGN UP WITH GOOGLE"
                 isBlack={false}
                 columnPadding={13}
+                callback={googleAuth}
               />
             </>
           )}

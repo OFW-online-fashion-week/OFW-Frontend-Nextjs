@@ -7,6 +7,7 @@ import { getFileData } from "./../../lib/util/getFileData";
 import BrandPagePreview from "./BrandPagePreview";
 import file from "../../api/file";
 import auth from "../../api/auth";
+import { useRouter } from "next/dist/client/router";
 
 export default function BrandRegistration() {
   const nameRef = useRef<HTMLInputElement>(null);
@@ -94,7 +95,9 @@ export default function BrandRegistration() {
         psw: password,
       })
       .then(() => {
-        alert("됬다");
+        const router = useRouter();
+        alert("Registration has been applied");
+        router.push("/");
       });
   };
 
