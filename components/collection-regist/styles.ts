@@ -64,3 +64,17 @@ export const DCreate = styled.button`
     text-decoration: underline;
   }
 `;
+
+export const ChooseDesigner = styled.div`
+  width: 100%;
+  margin-top: 20px;
+  font-size: 18px;
+  color: black;
+  display: flex;
+  align-items: center;
+  & span {
+    color: ${COLOR.sub_text};
+    font-size: 14px;
+    margin-left: 10px;
+  }
+`;

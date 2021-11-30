@@ -31,11 +31,11 @@ export default function CollectionRegist() {
         <textarea placeholder="Description" ref={descriptionRef} />
         <Input
           fontSize={15}
-          placeholder="Designer"
+          placeholder="Search Designer"
           border="bottom"
           color="gray"
           columnPadding={10}
-          marginTop={50}
+          marginTop={40}
           fontWeight="thin"
         />
         <S.DesignerWrap>
@@ -45,12 +45,15 @@ export default function CollectionRegist() {
           </S.DProfile>
           <S.DCreate>Creact New Designer</S.DCreate>
         </S.DesignerWrap>
+        <S.ChooseDesigner>
+          김팔복 <span>jidole041214@naver.com</span>
+        </S.ChooseDesigner>
         <Button
           fontSize={20}
           isBlack={true}
           contents="SUBMIT"
           columnPadding={10}
-          marginTop={50}
+          marginTop={30}
         />
       </S.Contaienr>
     </S.Wrapper>

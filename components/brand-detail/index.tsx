@@ -20,6 +20,9 @@ export default function BrandDetail() {
       console.log(res.data);
     });
   };
+  useEffect(() => {
+    console.log(router.query.id);
+  }, []);
   return (
     <S.Wrapper>
       {data && (
