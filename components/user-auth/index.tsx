@@ -35,7 +35,10 @@ export default function UserAuth() {
     if (isCostomer) {
     } else {
       auth.brandLogin({ id: email, psw: psw }).then((res) => {
-        console.log(res.data);
+        const accessToken = res.data.accessToken;
+        localStorage.setItem(A_TOKEN, accessToken);
+        alert("success brand login");
+        router.push("/");
       });
     }
   };
@@ -98,46 +101,47 @@ export default function UserAuth() {
           <span>{!isCostomer && "Brand"}</span>
         </S.ChangeWrap>
         <S.InputWrap>
-          <Input
-            isFull={true}
-            fontSize={18}
-            fontWeight="thin"
-            rowPadding={15}
-            columnPadding={13}
-            placeholder="write your email"
-            inputRef={emailRef}
-          />
-          <Input
-            isFull={true}
-            fontSize={18}
-            fontWeight="thin"
-            rowPadding={15}
-            columnPadding={13}
-            placeholder="write your password"
-            marginTop={5}
-            type="password"
-            inputRef={pswRef}
-          />
-          <Button
-            fontSize={20}
-            fontWeight="bold"
-            isBlack={true}
-            contents="LOGIN"
-            columnPadding={13}
-            isFull={true}
-            marginTop={15}
-            callback={signIn}
-          />
+          {!isCostomer && (
+            <>
+              <Input
+                isFull={true}
+                fontSize={18}
+                fontWeight="thin"
+                rowPadding={15}
+                columnPadding={13}
+                placeholder="write your email"
+                inputRef={emailRef}
+              />
+              <Input
+                isFull={true}
+                fontSize={18}
+                fontWeight="thin"
+                rowPadding={15}
+                columnPadding={13}
+                placeholder="write your password"
+                marginTop={5}
+                type="password"
+                inputRef={pswRef}
+              />
+              <Button
+                fontSize={20}
+                fontWeight="bold"
+                isBlack={true}
+                contents="LOGIN"
+                columnPadding={13}
+                isFull={true}
+                marginTop={15}
+                callback={signIn}
+              />
+            </>
+          )}
           <div className="question">
-            {isCostomer ? (
-              <span onClick={routingToUserSignUp}>Don't you have account?</span>
-            ) : (
+            {!isCostomer && (
               <span onClick={routingToBrandSignUp}>Go to brand register</span>
             )}
           </div>
           {isCostomer && (
             <>
-              <S.Or>or</S.Or>
               <Button
                 isFull={true}
                 fontWeight="reguler"

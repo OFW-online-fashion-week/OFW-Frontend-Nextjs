@@ -2,8 +2,11 @@ import * as S from "./styles";
 import Text from "./../ui/Text/index";
 import Input from "../ui/Input";
 import Button from "../ui/Button";
+import { useRef } from "react";
 
 export default function CollectionRegist() {
+  const titleRef = useRef();
+  const descriptionRef = useRef();
   return (
     <S.Wrapper>
       <S.Contaienr>
@@ -23,8 +26,9 @@ export default function CollectionRegist() {
           columnPadding={10}
           marginTop={50}
           fontWeight="thin"
+          inputRef={titleRef}
         />
-        <textarea placeholder="Description" />
+        <textarea placeholder="Description" ref={descriptionRef} />
         <Input
           fontSize={15}
           placeholder="Designer"
@@ -34,6 +38,13 @@ export default function CollectionRegist() {
           marginTop={50}
           fontWeight="thin"
         />
+        <S.DesignerWrap>
+          <S.DProfile>
+            <h1>김팔복</h1>
+            <span>jidole041214@naver.com</span>
+          </S.DProfile>
+          <S.DCreate>Creact New Designer</S.DCreate>
+        </S.DesignerWrap>
         <Button
           fontSize={20}
           isBlack={true}
