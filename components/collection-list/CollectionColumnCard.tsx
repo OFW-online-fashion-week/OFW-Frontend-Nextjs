@@ -25,7 +25,7 @@ export default function CollectionColumnCard({
       {isAdd ? (
         <button
           className="add-wrap"
-          onClick={() => router.push("/collectionRegist")}
+          onClick={() => router.push(`/collectionRegist?id=${router.query.id}`)}
         >
           +
         </button>

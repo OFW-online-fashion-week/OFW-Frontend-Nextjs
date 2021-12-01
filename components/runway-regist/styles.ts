@@ -1,28 +1,35 @@
 import styled from "@emotion/styled";
-import { BaseWrapper, BaseContainer, COLOR } from "./../../styles/index";
+import { BaseContainer, COLOR } from "../../styles";
+import { BaseWrapper } from "./../../styles/index";
 
 export const Wrapper = styled(BaseWrapper)``;
 
-export const Contaienr = styled.div`
+export const Container = styled(BaseContainer)`
+  width: 700px;
   display: flex;
   flex-direction: column;
-  width: 700px;
-  padding-top: 50px;
-  & textarea {
-    margin-top: 50px;
-    height: 200px;
-    padding: 10px;
-    border: 1px solid ${COLOR.sub_text};
+  padding-top: 30px;
+`;
+
+export const FileBtnWrap = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+  gap: 10px;
+  & button {
+    padding: 10px 10px;
+    border: 1px solid black;
+    color: black;
     font-size: 15px;
-    font-weight: 300;
-    color: ${COLOR.text};
-    &::placeholder {
-      color: ${COLOR.sub_text};
-    }
+  }
+  & span {
+    color: ${COLOR.sub_text};
+    font-size: 15px;
   }
 `;
 
-export const DesignerWrap = styled.div`
+export const Wrap = styled.div`
   width: 100%;
   box-shadow: 0px 0px 5px rgb(0, 0, 0, 0.3);
   display: flex;
@@ -30,7 +37,7 @@ export const DesignerWrap = styled.div`
   padding: 0 15px;
 `;
 
-export const DProfile = styled.div`
+export const Profile = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
@@ -39,7 +46,7 @@ export const DProfile = styled.div`
   padding: 13px 10px;
   cursor: pointer;
   &:hover {
-    opacity: 0.5;
+    opacity: 0.8;
   }
   & h1 {
     font-size: 17px;
@@ -53,7 +60,7 @@ export const DProfile = styled.div`
   }
 `;
 
-export const DCreate = styled.button`
+export const Create = styled.button`
   width: 100%;
   font-size: 17px;
   font-weight: 400;
@@ -62,19 +69,5 @@ export const DCreate = styled.button`
   text-align: left;
   &:hover {
     text-decoration: underline;
-  }
-`;
-
-export const ChooseDesigner = styled.div`
-  width: 100%;
-  margin-top: 20px;
-  font-size: 18px;
-  color: black;
-  display: flex;
-  align-items: center;
-  & span {
-    color: ${COLOR.sub_text};
-    font-size: 14px;
-    margin-left: 10px;
   }
 `;

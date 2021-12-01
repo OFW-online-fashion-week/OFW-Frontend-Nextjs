@@ -23,8 +23,12 @@ export default function BrandDetail() {
     });
   };
   useEffect(() => {
-    console.log(router.query.id);
-  }, []);
+    const id = router.query.id;
+    id &&
+      brand.getBrandCollection(id).then((res) => {
+        console.log(res.data);
+      });
+  }, [router]);
   return (
     <S.Wrapper>
       {data && (
