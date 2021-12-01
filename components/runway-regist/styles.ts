@@ -17,11 +17,12 @@ export const FileBtnWrap = styled.div`
   align-items: center;
   margin-top: 30px;
   gap: 10px;
-  & button {
+  & div {
     padding: 10px 10px;
     border: 1px solid black;
     color: black;
     font-size: 15px;
+    cursor: pointer;
   }
   & span {
     color: ${COLOR.sub_text};

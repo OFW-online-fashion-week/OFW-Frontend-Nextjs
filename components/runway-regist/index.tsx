@@ -1,11 +1,13 @@
 import * as S from "./styles";
 import Text from "./../ui/Text/index";
 import Input from "../ui/Input";
-import Button from "../ui/Button";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ModelRegist from "./modal/modelRegist";
 import ClothesRegist from "./modal/clothesRegist";
 import runway from "../../api/runway";
+import { getFileData } from "./../../lib/util/getFileData";
+import file from "../../api/file";
+import Button from "./../ui/Button/index";
 
 export default function RunwayRegist() {
   const modelRef = useRef(null);
@@ -14,6 +16,8 @@ export default function RunwayRegist() {
   const [isClothModal, setIsClothModal] = useState(false);
   const [model, setModel] = useState();
   const [cloth, setCloth] = useState();
+  const [video, setVideo] = useState();
+  const [music, setMusic] = useState();
   const [modelArr, setModelArr] = useState([]);
   const [modelSearch, setModelSearch] = useState(false);
   const [clothArr, setClothArr] = useState([]);
@@ -46,8 +50,52 @@ export default function RunwayRegist() {
   const clothModalOff = () => {
     setIsClothModal(false);
   };
+  const getVideoFile = (event) => {
+    getFileData(event).then((res) => {
+      file.getS3Link(res.file).then((res) => {
+        setVideo(res.data);
+      });
+    });
+  };
+  const getImgFile = (event) => {
+    getFileData(event).then((res) => {
+      file.getS3Link(res.file).then((res) => {
+        setMusic(res.data);
+      });
+    });
+  };
+  const subData = () => {
+    runway
+      .createRunway({
+        bgm: music,
+        runway: video,
+        clothes: cloth,
+        model: model,
+        collection_id: 1,
+      })
+      .then((res) => {
+        console.log(res.data);
+      });
+  };
+  useEffect(() => {
+    alert("register your runway!");
+  }, []);
   return (
     <>
+      <input
+        type="file"
+        id="video"
+        style={{ display: "none" }}
+        onChange={getVideoFile}
+        accept="video/*"
+      />
+      <input
+        type="file"
+        id="music"
+        style={{ display: "none" }}
+        onChange={getImgFile}
+        accept="audio/*"
+      />
       {isModelModal && <ModelRegist modalOff={modelModalOff} />}
       {isClothModal && <ClothesRegist modalOff={clothModalOff} />}
       <S.Wrapper>
@@ -61,8 +109,10 @@ export default function RunwayRegist() {
             marginTop={5}
           />
           <S.FileBtnWrap>
-            <button>Runway Video</button>
-            <span>no file..</span>
+            <label htmlFor="video">
+              <div>Runway Video</div>
+            </label>
+            <span>{video ? video : "no file..."}</span>
           </S.FileBtnWrap>
           <Input
             color="gray"
@@ -123,8 +173,10 @@ export default function RunwayRegist() {
             </S.Wrap>
           )}
           <S.FileBtnWrap>
-            <button>Runway BGM</button>
-            <span>no file..</span>
+            <label htmlFor="music">
+              <div>Runway BGM</div>
+            </label>
+            <span>{music ? music : "no file..."}</span>
           </S.FileBtnWrap>
           <Button
             contents="CREATE"
@@ -132,6 +184,7 @@ export default function RunwayRegist() {
             fontSize={20}
             columnPadding={10}
             marginTop={40}
+            callback={subData}
           />
         </S.Container>
       </S.Wrapper>

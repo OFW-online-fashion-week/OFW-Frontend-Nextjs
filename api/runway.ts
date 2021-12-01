@@ -64,4 +64,20 @@ export default {
       },
     });
   },
+  createRunway({ bgm, runway, model, clothes, collection_id }) {
+    return request({
+      method: "post",
+      url: `/runway`,
+      headers: {
+        Authorization: `Bearer ` + localStorage.getItem(A_TOKEN),
+      },
+      data: {
+        collection_id: collection_id,
+        model_id: model,
+        clothes_id: clothes,
+        bgm_url: bgm,
+        runway_url: runway,
+      },
+    });
+  },
 };

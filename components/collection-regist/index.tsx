@@ -52,7 +52,7 @@ export default function CollectionRegist() {
       })
       .then((res) => {
         alert("success");
-        router.push(`/brands/${brand_id}`);
+        router.push(`/runwayRegist?collection_id=${res.data.collection_id}`);
       });
   };
   return (
