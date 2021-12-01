@@ -18,9 +18,6 @@ export default {
     return request({
       method: "get",
       url: `/collection/brand/${brand_id}`,
-      headers: {
-        Authorization: `Bearer ` + localStorage.getItem(A_TOKEN),
-      },
     });
   },
 };
