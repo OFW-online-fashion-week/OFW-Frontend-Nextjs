@@ -46,7 +46,7 @@ export const Profile = styled.div`
   padding: 13px 10px;
   cursor: pointer;
   &:hover {
-    opacity: 0.8;
+    opacity: 0.5;
   }
   & h1 {
     font-size: 17px;

@@ -5,14 +5,34 @@ import Button from "../ui/Button";
 import { useRef, useState } from "react";
 import ModelRegist from "./modal/modelRegist";
 import ClothesRegist from "./modal/clothesRegist";
+import runway from "../../api/runway";
 
 export default function RunwayRegist() {
   const modelRef = useRef(null);
   const clothesRef = useRef(null);
   const [isModelModal, setIsModelModal] = useState(false);
   const [isClothModal, setIsClothModal] = useState(false);
-  const searchClothes = ({ target }) => {
+  const [model, setModel] = useState();
+  const [cloth, setCloth] = useState();
+  const [modelArr, setModelArr] = useState([]);
+  const [modelSearch, setModelSearch] = useState(false);
+  const [clothArr, setClothArr] = useState([]);
+  const [clothSearch, setClothSearch] = useState(false);
+  const searchModel = ({ target }) => {
     const val = target.value;
+    if (!val) return;
+    setModelSearch(true);
+    runway.searchModel(val).then((res) => {
+      setModelArr(res.data.modelSearchContentResponseList);
+    });
+  };
+  const searchCloth = ({ target }) => {
+    const val = target.value;
+    if (!val) return;
+    setClothSearch(true);
+    runway.searchCloth(val).then((res) => {
+      setClothArr(res.data.clothesSearchContentResponseList);
+    });
   };
   const modelModalOn = () => {
     setIsModelModal(true);
@@ -53,14 +73,26 @@ export default function RunwayRegist() {
             marginTop={20}
             fontWeight="thin"
             inputRef={modelRef}
+            onChange={searchModel}
           />
-          <S.Wrap>
-            <S.Profile>
-              <h1>김팔복</h1>
-              <span>jidole041214@naver.com</span>
-            </S.Profile>
-            <S.Create onClick={modelModalOn}>Creact new Model</S.Create>
-          </S.Wrap>
+          {modelSearch && (
+            <S.Wrap>
+              {modelArr.map((obj, index) => (
+                <S.Profile
+                  key={index}
+                  onClick={() => {
+                    setModel(obj.id);
+                    setModelSearch(false);
+                    modelRef.current.value = obj.name;
+                  }}
+                >
+                  <h1>{obj.name}</h1>
+                  <span>{obj.email}</span>
+                </S.Profile>
+              ))}
+              <S.Create onClick={modelModalOn}>Creact new Model</S.Create>
+            </S.Wrap>
+          )}
           <Input
             color="gray"
             border="bottom"
@@ -70,14 +102,26 @@ export default function RunwayRegist() {
             marginTop={20}
             fontWeight="thin"
             inputRef={clothesRef}
+            onChange={searchCloth}
           />
-          <S.Wrap>
-            <S.Profile>
-              <h1>상의</h1>
-              <span>a-123123</span>
-            </S.Profile>
-            <S.Create onClick={clothModalOn}>Creact new Clothes</S.Create>
-          </S.Wrap>
+          {clothSearch && (
+            <S.Wrap>
+              {clothArr.map((obj, index) => (
+                <S.Profile
+                  key={index}
+                  onClick={() => {
+                    setCloth(obj.id);
+                    setClothSearch(false);
+                    clothesRef.current.value = obj.name;
+                  }}
+                >
+                  <h1>{obj.name}</h1>
+                  <span>{obj.style_code}</span>
+                </S.Profile>
+              ))}
+              <S.Create onClick={clothModalOn}>Creact new Clothes</S.Create>
+            </S.Wrap>
+          )}
           <S.FileBtnWrap>
             <button>Runway BGM</button>
             <span>no file..</span>

@@ -36,16 +36,19 @@ export const InputContainer = styled.div`
   width: 100%;
   margin-top: 50px;
   height: 600px;
-  & label {
+  & .none,
+  img {
     width: 400px;
     height: 100%;
+    cursor: pointer;
+  }
+  & .none {
     border: 1px dashed white;
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: 300;
-    cursor: pointer;
   }
   & input,
   select {
