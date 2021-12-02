@@ -97,11 +97,12 @@ export const RunwayList = styled.div`
     position: relative;
     overflow: hidden;
   }
-  & img {
+  & video {
     width: 100%;
     height: 100%;
     cursor: pointer;
     transition: 0.3s;
+    object-fit: cover;
     &:hover {
       transform: scale(1.1);
     }

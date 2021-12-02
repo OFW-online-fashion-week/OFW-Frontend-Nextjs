@@ -1,24 +1,29 @@
 import * as S from "./styles";
 import { useRouter } from "next/dist/client/router";
+import collection from "../../api/collection";
+import { useEffect, useState } from "react";
 
-export default function RunwayList() {
+export default function RunwayList({ id }) {
   const router = useRouter();
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    collection.getCollectionRunway(id).then((res) => {
+      console.log(res.data);
+      setData(res.data.runwayContentResponseList);
+    });
+  }, []);
   return (
     <S.RunwayWrap>
       <h1>Runways</h1>
       <S.RunwayList>
-        <div className="cover-wrap">
-          <img
-            onClick={() => router.push("/runway")}
-            src="http://talkimg.imbc.com/TVianUpload/tvian/TViews/image/2018/10/20/KSK1X9kfGGlX636756537893829737.jpg"
-          />
-        </div>
-        <div className="cover-wrap">
-          <img src="https://lh3.googleusercontent.com/proxy/mPqDqKs7-tnKwc4a0-YIu5f5_2GG7kE_zevlkJksrtR_7IXzvwoSoHtyoCcltb5NVTYFuhOjxXg4uVav0z77fKIYYYQm90hdptm3nRuHY4RkNtTR-i43BurVAiYK9yrK" />
-        </div>
-        <div className="cover-wrap">
-          <img src="https://img.marieclairekorea.com/2018/10/mck_5bc9a83c7458b.jpg" />
-        </div>
+        {data.map((obj, index) => (
+          <div className="cover-wrap" key={index}>
+            <video
+              onClick={() => router.push(`/runway?id=${obj.id}`)}
+              src={obj.runway_url}
+            />
+          </div>
+        ))}
       </S.RunwayList>
     </S.RunwayWrap>
   );

@@ -17,4 +17,16 @@ export default {
       },
     });
   },
+  getCollectionDetail(collection_id): any {
+    return request({
+      method: "get",
+      url: `/collection/${collection_id}`,
+    });
+  },
+  getCollectionRunway(collection_id): any {
+    return request({
+      method: "get",
+      url: `/runway/brand?collection_id=${collection_id}`,
+    });
+  },
 };

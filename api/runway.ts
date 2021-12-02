@@ -80,4 +80,13 @@ export default {
       },
     });
   },
+  submitCollection(collection_id) {
+    return request({
+      method: "post",
+      url: `/collection/submit?collection_id=${collection_id}`,
+      headers: {
+        Authorization: `Bearer ` + localStorage.getItem(A_TOKEN),
+      },
+    });
+  },
 };

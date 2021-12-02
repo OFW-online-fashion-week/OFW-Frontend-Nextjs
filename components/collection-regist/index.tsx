@@ -40,7 +40,7 @@ export default function CollectionRegist() {
   };
   const submit = () => {
     const title = titleRef.current.value;
-    const description = designerRef.current.value;
+    const description = descriptionRef.current.value;
     const designer_id = nowDesigner.id;
     const brand_id = router.query.id;
     collection
@@ -52,7 +52,7 @@ export default function CollectionRegist() {
       })
       .then((res) => {
         alert("success");
-        router.push(`/runwayRegist?collection_id=${res.data.collection_id}`);
+        router.push(`/runwayRegist?collection_id=${res.data}`);
       });
   };
   return (

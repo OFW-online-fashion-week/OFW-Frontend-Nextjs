@@ -8,6 +8,7 @@ import runway from "../../api/runway";
 import { getFileData } from "./../../lib/util/getFileData";
 import file from "../../api/file";
 import Button from "./../ui/Button/index";
+import { useRouter } from "next/dist/client/router";
 
 export default function RunwayRegist() {
   const modelRef = useRef(null);
@@ -16,12 +17,14 @@ export default function RunwayRegist() {
   const [isClothModal, setIsClothModal] = useState(false);
   const [model, setModel] = useState();
   const [cloth, setCloth] = useState();
-  const [video, setVideo] = useState();
-  const [music, setMusic] = useState();
+  const [video, setVideo] = useState<any>();
+  const [music, setMusic] = useState<any>();
   const [modelArr, setModelArr] = useState([]);
   const [modelSearch, setModelSearch] = useState(false);
   const [clothArr, setClothArr] = useState([]);
   const [clothSearch, setClothSearch] = useState(false);
+  const [cArr, setCArr] = useState([]);
+  const router = useRouter();
   const searchModel = ({ target }) => {
     const val = target.value;
     if (!val) return;
@@ -69,17 +72,28 @@ export default function RunwayRegist() {
       .createRunway({
         bgm: music,
         runway: video,
-        clothes: cloth,
+        clothes: cArr,
         model: model,
-        collection_id: 1,
+        collection_id: parseInt(router.query.collection_id.toString()),
       })
       .then((res) => {
-        console.log(res.data);
+        alert("success");
+        modelRef.current.value = "";
+        clothesRef.current.value = "";
+        setCArr([]);
+        setMusic(null);
+        setVideo(null);
       });
   };
   useEffect(() => {
     alert("register your runway!");
   }, []);
+  const submitCollection = () => {
+    runway.submitCollection(router.query.collection_id).then((res) => {
+      alert("success!");
+      router.push(`/collections/${router.query.collection_id}`);
+    });
+  };
   return (
     <>
       <input
@@ -163,6 +177,7 @@ export default function RunwayRegist() {
                     setCloth(obj.id);
                     setClothSearch(false);
                     clothesRef.current.value = obj.name;
+                    setCArr((arr) => [...arr, obj.id]);
                   }}
                 >
                   <h1>{obj.name}</h1>
@@ -185,6 +200,14 @@ export default function RunwayRegist() {
             columnPadding={10}
             marginTop={40}
             callback={subData}
+          />
+          <Button
+            contents="CONFIRM COLLECTION"
+            isBlack={false}
+            fontSize={20}
+            columnPadding={10}
+            marginTop={10}
+            callback={submitCollection}
           />
         </S.Container>
       </S.Wrapper>
