@@ -8,7 +8,6 @@ export default function RunwayList({ id }) {
   const [data, setData] = useState([]);
   useEffect(() => {
     collection.getCollectionRunway(id).then((res) => {
-      console.log(res.data);
       setData(res.data.runwayContentResponseList);
     });
   }, []);

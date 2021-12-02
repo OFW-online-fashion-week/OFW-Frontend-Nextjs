@@ -11,7 +11,6 @@ export default function CollectionDetail() {
   const id = router.query.id;
   useEffect(() => {
     if (id !== undefined) {
-      console.log(id);
       collection.getCollectionDetail(id).then((res) => {
         setData(res.data);
       });

@@ -1,11 +1,12 @@
 import * as S from "./styles";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { InfoIcon, LogoIcon } from "../../assets";
 import { useRouter } from "next/dist/client/router";
-import Button from "../ui/Button";
+import runway from "../../api/runway";
 
 export default function RunwayShow() {
   const router = useRouter();
+  const [data, setData] = useState<any>();
 
   const videoControl = () => {
     const deltaTime = 0.1;
@@ -20,11 +21,27 @@ export default function RunwayShow() {
   };
 
   useEffect(() => {
-    videoControl();
-  }, []);
+    const id = router.query.id;
+    if (id !== undefined) {
+      runway.getRunwayDetail(id).then((res) => {
+        setData(res.data);
+      });
+    }
+  }, [router]);
+
+  useEffect(() => {
+    if (data && data.runway_url) {
+      videoControl();
+      const audio = document.getElementById("audio");
+      audio.src = data.bgmPath;
+      audio.loop;
+      audio.play();
+    }
+  }, [data]);
   return (
     <S.Wrapper>
       <S.Header>
+        <audio id="audio" style={{ display: "none" }}></audio>
         <button onClick={() => router.push("/")}>
           <LogoIcon color="white" />
         </button>
@@ -37,7 +54,7 @@ export default function RunwayShow() {
       <S.SideBar>
         <button>Model</button>
       </S.SideBar>
-      <video src="/runway2.mp4" id="video" />
+      {data && <video src={data.runway_url} id="video" />}
     </S.Wrapper>
   );
 }

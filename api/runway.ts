@@ -89,4 +89,10 @@ export default {
       },
     });
   },
+  getRunwayDetail(runway_id): any {
+    return request({
+      method: "get",
+      url: `/runway?runway_id=${runway_id}`,
+    });
+  },
 };

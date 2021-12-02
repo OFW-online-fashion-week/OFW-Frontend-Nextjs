@@ -47,7 +47,8 @@ input {
   padding: 0;
 }
 
-img {
+img,
+video {
   object-fit: cover;
 }
 
