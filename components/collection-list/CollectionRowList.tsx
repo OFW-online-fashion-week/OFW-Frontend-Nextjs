@@ -10,7 +10,7 @@ export default function CollectionRowList({ data }) {
           key={index}
           title={item.title}
           description={item.description}
-          coverImg={item.coverImg}
+          runwayPath={item.runwayPath}
           id={item.id}
         />
       ))}

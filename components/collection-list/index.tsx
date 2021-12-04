@@ -3,14 +3,9 @@ import CollectionColumnList from "./CollectionColumnList";
 import CollectionRowList from "./CollectionRowList";
 import React from "react";
 import * as S from "./styles";
-import { listData } from "./listData";
 
-export default function CollectionList({
-  dataList = listData,
-  margin,
-  isMine = false,
-}) {
-  const [isColumn, setIsColumn] = React.useState<boolean>(true);
+export default function CollectionList({ dataList, margin, isMine }) {
+  const [isColumn, setIsColumn] = React.useState(true);
 
   const sortToColumn = React.useCallback(() => {
     setIsColumn(true);

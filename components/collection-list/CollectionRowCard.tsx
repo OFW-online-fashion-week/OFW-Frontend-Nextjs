@@ -4,12 +4,12 @@ import { CollectionCard } from "./../../lib/interfaces/collection";
 export default function CollectionRowCard({
   title,
   description,
-  coverImg,
+  runwayPath,
   id,
 }: CollectionCard) {
   return (
     <S.RowCard>
-      <img className="cover-img" src={coverImg} />
+      <video className="cover-img" src={runwayPath} />
       <div>
         <h1 className="collection-title">{title}</h1>
         <p className="collection-description">{description}</p>

@@ -17,14 +17,16 @@ export default function CollectionColumnList({ data, isMine = false }: Props) {
         {
           title: "Add Collection",
           description: "Add your new collection for new season",
-          coverImg: "",
+          runwayPath: "",
           id: "",
           isAdd: true,
         },
-        ...arr,
+        ...data,
       ]);
+    } else {
+      setArr(data);
     }
-  }, []);
+  }, [data]);
 
   return (
     <S.ColumnCardList>
@@ -33,7 +35,7 @@ export default function CollectionColumnList({ data, isMine = false }: Props) {
           key={index}
           title={item.title}
           description={item.description}
-          coverImg={item.coverImg}
+          runwayPath={item.runwayPath}
           id={item.id}
           isAdd={item.isAdd}
         />

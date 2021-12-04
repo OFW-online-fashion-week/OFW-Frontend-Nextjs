@@ -3,10 +3,29 @@ import { useEffect, useState } from "react";
 import { InfoIcon, LogoIcon } from "../../assets";
 import { useRouter } from "next/dist/client/router";
 import runway from "../../api/runway";
+import Model from "./Model";
+import Cloth from "./Cloth";
 
 export default function RunwayShow() {
   const router = useRouter();
+  const id = router.query.id;
   const [data, setData] = useState<any>();
+  const [modelModal, setmodelModal] = useState(false);
+  const [clothModal, setClothModal] = useState(false);
+
+  const onmodelModal = () => {
+    setmodelModal(true);
+  };
+  const offmodelModal = () => {
+    setmodelModal(false);
+  };
+
+  const onClothModal = () => {
+    setClothModal(true);
+  };
+  const offClothModal = () => {
+    setClothModal(false);
+  };
 
   const videoControl = () => {
     const deltaTime = 0.1;
@@ -21,7 +40,6 @@ export default function RunwayShow() {
   };
 
   useEffect(() => {
-    const id = router.query.id;
     if (id !== undefined) {
       runway.getRunwayDetail(id).then((res) => {
         setData(res.data);
@@ -32,7 +50,7 @@ export default function RunwayShow() {
   useEffect(() => {
     if (data && data.runway_url) {
       videoControl();
-      const audio = document.getElementById("audio");
+      const audio: any = document.getElementById("audio");
       audio.src = data.bgmPath;
       audio.loop;
       audio.play();
@@ -40,6 +58,10 @@ export default function RunwayShow() {
   }, [data]);
   return (
     <S.Wrapper>
+      {modelModal && (
+        <Model offModal={offmodelModal} model_id={data.model_id} />
+      )}
+      {clothModal && <Cloth id={id} offModal={offClothModal} />}
       <S.Header>
         <audio id="audio" style={{ display: "none" }}></audio>
         <button onClick={() => router.push("/")}>
@@ -47,12 +69,12 @@ export default function RunwayShow() {
         </button>
       </S.Header>
       <S.Footer>
-        <button>
+        <button onClick={onClothModal}>
           <InfoIcon />
         </button>
       </S.Footer>
       <S.SideBar>
-        <button>Model</button>
+        <button onClick={onmodelModal}>Model</button>
       </S.SideBar>
       {data && <video src={data.runway_url} id="video" />}
     </S.Wrapper>

@@ -29,4 +29,10 @@ export default {
       url: `/runway/brand?collection_id=${collection_id}`,
     });
   },
+  getAllCollection(): any {
+    return request({
+      method: "get",
+      url: `/collection/all?page=0`,
+    });
+  },
 };

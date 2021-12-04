@@ -6,6 +6,7 @@ export const Wrapper = styled(BaseWrapper)`
   flex-direction: column;
   align-items: center;
   padding-bottom: 0;
+  overflow-x: hidden;
 `;
 
 export const Container = styled(BaseContainer)`
@@ -88,7 +89,7 @@ export const RunwayWrap = styled.div`
 `;
 
 export const RunwayList = styled.div`
-  width: 100%;
+  width: 100vw;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   & .cover-wrap {

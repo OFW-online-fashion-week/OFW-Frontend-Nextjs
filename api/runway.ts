@@ -95,4 +95,16 @@ export default {
       url: `/runway?runway_id=${runway_id}`,
     });
   },
+  getModelDetail(model_id): any {
+    return request({
+      method: "get",
+      url: `/model/${model_id}`,
+    });
+  },
+  getClothDetail(runway_id): any {
+    return request({
+      method: "get",
+      url: `/clothes/${runway_id}`,
+    });
+  },
 };

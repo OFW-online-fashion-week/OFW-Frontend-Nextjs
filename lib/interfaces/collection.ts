@@ -1,7 +1,7 @@
 export interface CollectionCard {
   title: string;
   description: string;
-  coverImg: string;
+  runwayPath: string;
   id: string | number;
   isAdd?: boolean;
 }

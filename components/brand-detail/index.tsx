@@ -10,6 +10,7 @@ import { AUD } from "./../../lib/export/localstorage";
 
 export default function BrandDetail() {
   const [data, setData] = useState<any>();
+  const [collectionData, setCollectionData] = useState([]);
   const router = useRouter();
   useEffect(() => {
     brand.getBrandDetail(1).then((res) => {
@@ -26,9 +27,10 @@ export default function BrandDetail() {
     const id = router.query.id;
     id &&
       brand.getBrandCollection(id).then((res) => {
-        console.log(res.data);
+        setCollectionData(res.data.collectionContentResponses);
       });
   }, [router]);
+
   return (
     <S.Wrapper>
       {data && (
@@ -50,6 +52,7 @@ export default function BrandDetail() {
                 router.query.id === localStorage.getItem(BRAND_ID) &&
                 localStorage.getItem(AUD) === "brand"
               }
+              dataList={collectionData}
             />
           </S.Container>
         </S.BiggiestContainer>

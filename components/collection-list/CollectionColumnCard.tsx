@@ -10,7 +10,7 @@ interface Props extends CollectionCard {
 export default function CollectionColumnCard({
   title,
   description,
-  coverImg,
+  runwayPath,
   id,
   isAdd,
 }: Props) {
@@ -30,8 +30,8 @@ export default function CollectionColumnCard({
           +
         </button>
       ) : (
-        <img
-          src={coverImg}
+        <video
+          src={runwayPath}
           onClick={routingToCollection}
           className="cover-img"
         />
