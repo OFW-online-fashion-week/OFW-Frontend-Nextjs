@@ -5,23 +5,37 @@ import brand from "../../api/brand";
 import { useEffect, useState } from "react";
 import like from "../../api/like";
 import { useRouter } from "next/dist/client/router";
-import { BRAND_ID } from "../../lib/export/localstorage";
+import { BRAND_ID, USER_ID } from "../../lib/export/localstorage";
 import { AUD } from "./../../lib/export/localstorage";
 
 export default function BrandDetail() {
   const [data, setData] = useState<any>();
   const [collectionData, setCollectionData] = useState([]);
+  const [isLike, setIsLike] = useState(false);
   const router = useRouter();
+  const brand_id = router.query.id;
+  useEffect(() => {
+    if (brand_id) {
+      if (localStorage.getItem(AUD) === "user") {
+        brand.getIsLike(brand_id, localStorage.getItem(USER_ID)).then((res) => {
+          setIsLike(res.data);
+        });
+      }
+    }
+  }, [brand_id]);
   useEffect(() => {
     brand.getBrandDetail(1).then((res) => {
       setData(res.data);
     });
   }, []);
   const requestLike = () => {
-    const brand_id = router.query.id;
-    like.like(brand_id).then((res) => {
-      console.log(res.data);
-    });
+    if (isLike) {
+      like.unLike(brand_id).then((res) => {});
+      setIsLike(false);
+    } else {
+      like.like(brand_id).then((res) => {});
+      setIsLike(true);
+    }
   };
   useEffect(() => {
     const id = router.query.id;
@@ -42,7 +56,7 @@ export default function BrandDetail() {
               <h1 className="brand-name">{data.name}</h1>
               <div className="icon-wrap">
                 <LinkIcon callback={() => window.open(data.url)} />
-                <HeartIcon check={false} callback={requestLike} />
+                <HeartIcon check={isLike} callback={requestLike} />
               </div>
             </div>
             <div className="description">{data.description}</div>

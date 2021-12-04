@@ -24,7 +24,12 @@ export default function Header() {
     <S.Wrapper>
       <S.Container>
         <S.IconWrap>
-          <HeartIcon check={false} color="black" size={20} />
+          <HeartIcon
+            check={false}
+            color="black"
+            size={20}
+            callback={() => router.push("/like")}
+          />
           <UserIcon callback={routingToAuth} />
         </S.IconWrap>
         <S.WebLogo onClick={routingToMain}>

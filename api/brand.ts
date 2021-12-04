@@ -20,4 +20,13 @@ export default {
       url: `/collection/brand/${brand_id}`,
     });
   },
+  getIsLike(brand_id, user_id): any {
+    return request({
+      method: "get",
+      url: `/like/is?brand_id=${brand_id}&user_id=${user_id}`,
+      headers: {
+        Authorization: `Bearer ` + localStorage.getItem(A_TOKEN),
+      },
+    });
+  },
 };

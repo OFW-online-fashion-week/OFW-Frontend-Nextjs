@@ -5,7 +5,12 @@ import Input from "../ui/Input";
 import { useRouter } from "next/dist/client/router";
 import { useCallback, useEffect, useRef, useState } from "react";
 import auth from "../../api/auth";
-import { A_TOKEN, BRAND_ID, AUD } from "./../../lib/export/localstorage";
+import {
+  A_TOKEN,
+  BRAND_ID,
+  AUD,
+  USER_ID,
+} from "./../../lib/export/localstorage";
 
 export default function UserAuth() {
   const [isCostomer, setIsCostomer] = useState<boolean>(true);
@@ -70,8 +75,11 @@ export default function UserAuth() {
         .then((res) => {
           const accessToken = res.data.accessToken;
           const email = res.data.email;
+          const userId = res.data.userId;
           if (accessToken) {
             localStorage.setItem(A_TOKEN, accessToken);
+            localStorage.setItem(AUD, "user");
+            localStorage.setItem(USER_ID, userId);
             alert("success login");
             router.push("/");
           } else {
@@ -84,6 +92,10 @@ export default function UserAuth() {
               })
               .then((res) => {
                 const accessToken = res.data.accessToken;
+                const userId = res.data.userId;
+                localStorage.setItem(A_TOKEN, accessToken);
+                localStorage.setItem(USER_ID, userId);
+                localStorage.setItem(AUD, "user");
                 alert("success signup and login");
                 localStorage.setItem(A_TOKEN, accessToken);
                 router.push("/");
